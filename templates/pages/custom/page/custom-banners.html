@@ -1,0 +1,58 @@
+---
+blog:
+  recent_posts:
+    limit: {{theme_settings.homepage_blog_posts_count}}
+---
+{{#partial "page"}}
+{{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+<main class="page" page-title="{{lowercase (dashcase page.title)}}">
+    <div class="container-webpages" style="width:100%;display:block">
+        {{{region name="church_banners"}}} 
+    </div>
+    {{>aoc-custom-section/homepage/usp-section theme_settings=theme_settings}}
+    {{>aoc-custom-section/homepage/custom-design-section theme_settings=theme_settings}}
+    {{>aoc-custom-section/homepage/blog-post-section theme_settings=theme_settings}}
+    {{>aoc-custom-section/homepage/request-free-quote theme_settings=theme_settings}}
+    
+
+
+    {{!--
+    {{#unless theme_settings.hide_page_heading }}
+        <h1 class="page-heading">{{ page.title }}</h1>
+    {{/unless}}
+    --}}
+    {{#if page.sub_pages}}
+    <nav class="navBar navBar--sub">
+        <ul class="navBar-section account-navigation">
+        {{#each page.sub_pages}}
+            <li class="navBar-item"><a class="navBar-action" href="{{url}}">{{title}}</a></li>
+        {{/each}}
+        </ul>
+    </nav>
+    {{/if}}
+
+    {{{region name="page_builder_content"}}}
+
+    <div class="page-content page-content--centered">
+        {{#replace '%%Syndicate%%' page.content}}
+            {{> components/page/rss_feed}}
+        {{else}}
+            <p>{{{page.content}}}</p>
+        {{/replace}}
+    </div>
+
+    {{#if page.feed}}
+        <ul>
+            {{#each page.feed}}
+                <li>
+                    <h6><a href="{{url}}" target="_blank">{{title}}</a></h6>
+                    <p>{{content}}</p>
+                </li>
+            {{/each}}
+        </ul>
+    {{/if}}
+</main>
+
+{{/partial}}
+
+{{> layout/base}}

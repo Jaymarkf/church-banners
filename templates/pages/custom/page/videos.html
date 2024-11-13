@@ -1,0 +1,87 @@
+
+
+
+{{#partial "hero"}}
+<!-- {{> components/common/breadcrumbs breadcrumbs=breadcrumbs active_url=blog.url}} -->
+<!-- <div class><img src="{{cdn 'assets/img/images/videobanner.png'}}" /></div> -->
+{{/partial}}
+
+{{#partial "head"}}
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css">
+<script src="//code.jquery.com/jquery-3.1.1.min.js" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+{{/partial}}
+{{#partial "page"}}
+{{{region name="video_page_banner_video"}}}
+<div class="contend-zone church_box_container section white_background_section">
+    <div class="container">
+        <div class="church_box_wrapper all-video">
+            {{{region name="videos_page_videos"}}}
+            <div class="loadmore"><a class="btn btn-primary yellow-bg lmore" style="color:#fff">LOAD MORE</a></div>
+        </div>
+    </div>
+</div>
+<div class="contend-zone church_box_container section greybackground_section">
+   <div class="container">
+      <div class="church_box_wrapper">
+            {{{region name="videos_page_bottom_section_videos"}}}
+      </div>
+   </div>
+   {{> components/common/footer-upper}}
+</div>
+
+<script>
+$(document).ready(function() {
+    $('.popup-youtube, .popup-vimeo, .popup-gmaps').magnificPopup({
+        type: 'iframe',
+        mainClass: 'mfp-fade',
+        removalDelay: 160,
+        preloader: false,
+        fixedContentPos: false
+    });
+});
+
+// Define the target selector
+const targetSelector = '#video-boxes-54e39faf-dbc1-4feb-a3cd-8bef0c6fc362 .popup-video';
+
+// Function to check if the target element exists
+const checkForElement = () => document.querySelector(targetSelector);
+
+// Mutation observer callback function
+const mutationCallback = (mutationsList, observer) => {
+  if (checkForElement()) {
+    console.log('Element found in the DOM');
+    observer.disconnect(); // Stop observing once the element is found
+  }
+};
+
+// Create a MutationObserver instance
+const observer = new MutationObserver(mutationCallback);
+
+// Observe changes in the entire document
+observer.observe(document.body, {
+  childList: true,  // Observe additions/removals of child elements
+  subtree: true     // Observe changes in all descendant elements
+});
+
+// Check if the element is already in the DOM when the script runs
+if (checkForElement()) {
+//   console.log('Element is already present in the DOM');
+    setTimeout(() => {
+        $('#video-boxes-54e39faf-dbc1-4feb-a3cd-8bef0c6fc362 .popup-video').off();
+        $('#video-boxes-54e39faf-dbc1-4feb-a3cd-8bef0c6fc362 .popup-video').magnificPopup({
+        type: 'iframe',
+        mainClass: 'mfp-fade',
+        removalDelay: 160,
+        preloader: false,
+        fixedContentPos: false
+        });
+    }, 1000);
+  observer.disconnect(); // Stop observing since the element is already there
+}
+
+</script>
+
+{{/partial}}
+
+{{> layout/base}}

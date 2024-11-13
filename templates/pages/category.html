@@ -1,0 +1,89 @@
+---
+products:
+    new:
+        limit: {{theme_settings.homepage_new_products_count}}
+    featured:
+        limit: {{theme_settings.homepage_featured_products_count}}
+    top_sellers:
+        limit: {{theme_settings.homepage_top_products_count}}
+category:
+    shop_by_price: true
+    products:
+        new:
+            limit: {{theme_settings.categorypage_products_per_page}}
+        limit: 60
+blog:
+    recent_posts:
+        limit: {{theme_settings.homepage_blog_posts_count}}
+---
+{{inject "categoryProductsPerPage" theme_settings.categorypage_products_per_page}}
+{{#partial "head"}}
+    {{#if pagination.category.previous}}
+        <link rel="prev" href="{{pagination.category.previous}}">
+    {{/if}}
+    {{#if pagination.category.next}}
+        <link rel="next" href="{{pagination.category.next}}">
+    {{/if}}
+{{/partial}}
+
+{{#partial "page"}}
+
+{{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+
+{{!--
+{{#if category.image}}
+    {{> components/common/responsive-img
+        image=category.image
+        fallback_size=theme_settings.zoom_size
+        lazyload=theme_settings.lazyload_mode
+        class="category-header-image"
+    }}
+{{/if}}
+--}}
+{{!--
+{{#unless theme_settings.hide_category_page_heading }}
+    <h1 class="page-heading">{{category.name}}</h1>
+    {{{region name="category_below_header"}}}
+{{/unless}}
+--}}
+{{{region name="product_custom_description"}}}
+{{{region name="product_category_custom_image"}}} 
+
+
+{{!--
+{{{category.description}}}
+--}}
+
+<div class="page">
+    {{!--
+    {{#if category.faceted_search_enabled}}
+        <aside class="page-sidebar col-xl-4 col-lg-4 page-sidebar sidebar-offcanvas" id="faceted-search-container">
+            {{> components/category/sidebar}}
+        </aside>
+    {{else if category.subcategories}}
+        <aside class="page-sidebar col-xl-4 col-lg-4 page-sidebar sidebar-offcanvas" id="faceted-search-container">
+            {{> components/category/sidebar}}
+        </aside>
+    {{else if theme_settings.shop_by_price_visibility}}
+        <aside class="page-sidebar col-xl-4 col-lg-4 page-sidebar sidebar-offcanvas" id="faceted-search-container">
+            {{> components/category/sidebar}}
+        </aside>
+    {{/if}}
+    --}}
+    {{>aoc-custom-section/homepage/usp-section theme_settings=theme_settings}}
+    <main class="page-content products-category" id="product-listing-container">
+        {{> components/category/product-listing}}
+    </main>
+
+
+    <div class="page-region">
+ 
+
+    </div>
+</div>
+{{>aoc-custom-section/homepage/custom-design-section theme_settings=theme_settings}}
+{{>aoc-custom-section/homepage/blog-post-section theme_settings=theme_settings}}
+{{>aoc-custom-section/homepage/request-free-quote theme_settings=theme_settings}}
+
+{{/partial}}
+{{> layout/base}}

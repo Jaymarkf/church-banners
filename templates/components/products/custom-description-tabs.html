@@ -1,0 +1,58 @@
+<div class="parent-container-dropzone">
+    <div class="tabs-dropzone" panedropzone="gr-dropzone-product_information">
+        <span  class="dropzone-title" dropzone-id="gr-dropzone-product_information">Information <span class="cross_toggle">|</span></span>
+    </div>
+    <!-- dropzone location -->
+    <div id="gr-dropzone-product_information" class="dropzone-container">
+
+    </div>
+    <div class="tabs-dropzone" panedropzone="gr-dropzone-product_which-banner">
+        <span  class="dropzone-title" dropzone-id="gr-dropzone-product_which-banner">Which banner material should I choose for my church? <span class="cross_toggle">|</span></span>
+    </div>
+
+    <!-- dropzone location -->
+    <div id="gr-dropzone-product_which-banner" class="dropzone-container">
+
+    </div>
+
+
+    <div class="tabs-dropzone" panedropzone="gr-dropzone-product_shipping-handling">
+        <span  class="dropzone-title" dropzone-id="gr-dropzone-product_shipping-handling">Shipping and Handling <span class="cross_toggle">|</span></span>
+    </div>
+
+    <!-- dropzone location -->
+    <div id="gr-dropzone-product_shipping-handling" class="dropzone-container">
+
+    </div>
+    <div class="tabs-dropzone" panedropzone="gr-dropzone-product_payment-return">
+        <span  class="dropzone-title" dropzone-id="gr-dropzone-product_payment-return">Payment and Return Policies and Refund <span class="cross_toggle">|</span></span>
+    </div>
+    <!-- dropzone location -->
+    <div id="gr-dropzone-product_payment-return" class="dropzone-container">
+
+    </div>
+</div>
+<div class="custom-dropzone-content-tab">
+    {{#if product.description}}
+        <div class="content-dropzone is-active" id="tab-description">
+            {{{product.description}}}
+        </div>
+    {{/if}}
+    {{#if product.warranty}}
+        <div class="tab-content {{#unless product.description}}is-active{{/unless}}" id="tab-warranty">
+            {{{product.warranty}}}
+        </div>
+    {{/if}}
+    {{#all product.custom_fields theme_settings.show_custom_fields_tabs}}
+      <div class="tab-content" id="tab-{{dashcase (lowercase (sanitize theme_settings.pdp-custom-fields-tab-label))}}">
+         <dl class="productView-info">
+            {{> components/products/custom-fields }}
+         </dl>
+      </div>
+    {{/all}}
+    {{#all settings.show_product_reviews theme_settings.show_product_reviews}}
+       <div class="tab-content" id="tab-reviews">
+           {{> components/products/reviews reviews=product.reviews product=product urls=urls}}
+       </div>
+    {{/all}}
+</div>
