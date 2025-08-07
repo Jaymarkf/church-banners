@@ -1,0 +1,45 @@
+<div class="container-blog-post-section" style="padding-bottom:40px;">
+    <div class="container-header-section">
+        <h2 class="h2-mulish text-black">Latest Blog Posts</h2>
+    </div>
+    <div class="main-content-blog-post-section">
+        <div class="col-blog-post">
+                <div class="blog-img-container">
+                    {{> components/common/responsive-img
+                        image=blog.recent_posts.0.thumbnail
+                        fallback_size=theme_settings.blog_size
+                        lazyload=theme_settings.lazyload_mode
+                    }}
+                </div>
+                <div class="blog-content-container">
+                        <span class="h4-mulish text-black">
+                           {{blog.recent_posts.0.title}}
+                        </span>
+                        <span class="p-mulish text-black">
+                            {{blog.recent_posts.0.date_published}}
+                        </span>
+                        <a href="{{blog.recent_posts.0.url}}" class="button-white">Read More</a>
+                </div>
+
+        </div>
+        <div class="col-blog-post">
+            <div class="blog-img-container">
+                {{> components/common/responsive-img
+                    image=blog.recent_posts.1.thumbnail
+                    fallback_size=theme_settings.blog_size
+                    lazyload=theme_settings.lazyload_mode
+                }}
+            </div>
+            <div class="blog-content-container">
+                    <span class="h4-mulish text-black">
+                       {{blog.recent_posts.1.title}}
+                    </span>
+                    <span class="p-mulish text-black">
+                        {{blog.recent_posts.1.date_published}}
+                    </span>
+                    <a href="{{blog.recent_posts.1.url}}" class="button-white">Read More</a>
+            </div>
+
+    </div>
+    </div>
+</div>

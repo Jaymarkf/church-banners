@@ -1,0 +1,1144 @@
+<div class="container-search-custom cc-mobile">
+    <form action="{{urls.search}}" method="get">
+        <div class="container-field-search">
+            <input type="text" name="search_query" placeholder="Search">
+            <button type="submit"><svg>
+                    <use xlink:href="#icon-search"></use>
+                </svg></button>
+        </div>
+    </form> 
+</div>
+<div class="container-custom-navigation">
+
+    <div class="main-custom-nav">
+        <div class="container-parent-categ">
+            <div class="nav-title cc mobile-nav-cc">
+                <div class="container-header-category">
+                    <span class="main-mobile-nav">Categories</span> <svg>
+                        <use xlink:href="#icon-chevron-down"></use>
+                    </svg>
+                </div>
+                <div class="container-mobile-navigation">
+                    <div class="col-nav-mobile category">
+                        <div class="container-parent-category">
+                            <ul class="u-categ">
+                                {{#each categories}}
+                                {{#inArray (split
+                                'church-banners|feather-flags|backdrop-banners|light-pole-banners|stands-displays|kids-ministry|outdoor-signs|customize|templates-videos-more'
+                                '|') (lowercase (dashcase name))}}
+                                <li class="p-categ">
+                                    <a class="parent-category" href="{{#if id '==' '254'}}/church-banners{{else if id '==' '755'}}https://www.churchbanners.com/banner-resources/{{else}}{{url}}{{/if}} "  parent-category-id="{{id}}"> 
+                                        {{!-- todo: make this dynamic icon in navigation <img
+                                            data-src="https://cdn11.bigcommerce.com/s-cnam78/stencil/a1b1fd80-71ec-013c-c6ef-52867ecfc7a5/e/e989b8f0-d51e-013c-2337-5a0a81ead570/img/images/Church.png"
+                                            src="{{cdn 'img/loading.svg'}}" alt="Navigation {{name}} icon"
+                                            class="lazyload img-icon">--}}
+
+                                        <img data-src="{{#if (lowercase (dashcase name)) '==' 'church-banners'}}
+                                                    https://cdn11.bigcommerce.com/s-cnam78/stencil/a1b1fd80-71ec-013c-c6ef-52867ecfc7a5/e/e989b8f0-d51e-013c-2337-5a0a81ead570/img/images/Church.png
+                                                
+                                                {{else if (lowercase (dashcase name)) '==' 'feather-flags'}}
+
+                                                    https://cdn11.bigcommerce.com/s-cnam78/stencil/a1b1fd80-71ec-013c-c6ef-52867ecfc7a5/e/e989b8f0-d51e-013c-2337-5a0a81ead570/img/images/flights.png
+                                                
+                                                {{else if (lowercase (dashcase name)) '==' 'backdrop-banners'}}
+                                                
+                                                    https://cdn11.bigcommerce.com/s-cnam78/stencil/a1b1fd80-71ec-013c-c6ef-52867ecfc7a5/e/e989b8f0-d51e-013c-2337-5a0a81ead570/img/images/Shape.png
+
+                                                {{else if (lowercase (dashcase name)) '==' 'light-pole-banners'}}
+
+                                                    https://cdn11.bigcommerce.com/s-cnam78/stencil/a1b1fd80-71ec-013c-c6ef-52867ecfc7a5/e/e989b8f0-d51e-013c-2337-5a0a81ead570/img/images/light-pole.png
+
+                                                {{else if (lowercase (dashcase name)) '==' 'stands-displays'}}
+
+                                                    https://cdn11.bigcommerce.com/s-cnam78/stencil/a1b1fd80-71ec-013c-c6ef-52867ecfc7a5/e/e989b8f0-d51e-013c-2337-5a0a81ead570/img/images/stand.png
+                                                
+                                                {{else if (lowercase (dashcase name)) '==' 'kids-ministry'}}
+
+                                                    https://cdn11.bigcommerce.com/s-cnam78/stencil/a1b1fd80-71ec-013c-c6ef-52867ecfc7a5/e/e989b8f0-d51e-013c-2337-5a0a81ead570/img/images/Kids.png    
+
+                                                {{else if (lowercase (dashcase name)) '==' 'outdoor-signs'}}
+
+                                                    https://cdn2.bigcommerce.com/n-nr1m3w/cnam78/product_images/uploaded_images/custom1.png
+                                                
+                                                {{else if (lowercase (dashcase name)) '==' 'customize'}}
+
+                                                    https://cdn11.bigcommerce.com/s-cnam78/stencil/a1b1fd80-71ec-013c-c6ef-52867ecfc7a5/e/e989b8f0-d51e-013c-2337-5a0a81ead570/img/images/Custom.png
+
+                                                {{else if (lowercase (dashcase name)) '==' 'templates-videos-more'}}
+
+                                                    https://cdn11.bigcommerce.com/s-cnam78/stencil/a1b1fd80-71ec-013c-c6ef-52867ecfc7a5/e/e989b8f0-d51e-013c-2337-5a0a81ead570/img/images/Video.png
+
+                                                {{/if}}" src="{{cdn 'img/loading.svg'}}" alt="Navigation {{name}} icon"
+                                            class="lazyload img-icon">
+
+                                        <span class="nav-name">{{name}} <i class="arrow-button"><svg>
+                                                    <use xlink:href="#icon-chevron-down"></use>
+                                                </svg></i></span>
+                                    </a>
+                                    {{#if (lowercase (dashcase name)) '==' 'church-banners'}}
+                                    <div class="container-ul-sub parent-sub-category-id-{{id}}">
+                                        <ul class="parent-sub-category">
+                                            <li>
+                                                <a href="/church-banners/" class="parent-subcat-link">Popular</a>
+                                                <a href="/church-banners/" class="subcat-children-link">Church
+                                                    Banners</a>
+                                                <a href="/church-signs/" class="subcat-children-link">Church Signs</a>
+                                                <a href="/church-welcome-banners/"
+                                                    class="subcat-children-link">Welcome</a>
+                                                <a href="/wedding-banners/" class="subcat-children-link">Wedding</a>
+                                                <a href="/baptism-banners/" class="subcat-children-link">Baptism</a>
+                                                <a href="/design-collections-1/" class="subcat-children-link">Design
+                                                    Sets</a>
+                                                <a href="/seasonal-church-banners/"
+                                                    class="subcat-children-link">Seasonal</a>
+                                                <a href="/apparel/" class="subcat-children-link">Apparel</a>
+                                                <a href="/handheld-signs/" class="subcat-children-link">Handheld
+                                                    Signs</a>
+                                                <a href="/retractable-banners/" class="subcat-children-link">Retractable
+                                                    Banner</a>
+                                                <a href="/spanish-banners/" class="subcat-children-link">Spanish
+                                                    Banners</a>
+                                                <a href="/anniversary-banner/"
+                                                    class="subcat-children-link">Anniversary</a>
+
+                                            </li>
+                                            <li>
+                                                <a href="/seasonal-church-banners/"
+                                                    class="parent-subcat-link">Seasonal</a>
+                                                <a href="/spring-worship-banners/"
+                                                    class="subcat-children-link">Spring</a>
+                                                <a href="/summer-banners/" class="subcat-children-link">Summer</a>
+                                                <a href="/patriotic-banners/" class="subcat-children-link">Patriotic</a>
+                                                <a href="/thanksgiving-banners" class="subcat-children-link">Fall
+                                                    Harvest</a>
+                                                <a href="/advent-banners/" class="subcat-children-link">Advent</a>
+                                                <a href="/christmas-banners/" class="subcat-children-link">Christmas</a>
+                                                <a href="/new-year-banners/" class="subcat-children-link">New Year</a>
+                                                <a href="/winter-banners/" class="subcat-children-link">Winter</a>
+                                                 <a href="/lent-banners/" class="subcat-children-link">Lent</a>
+                                                <a href="/easter-banners/" class="subcat-children-link">Easter</a>
+                                                <a href="/mothers-day/" class="subcat-children-link">Mothers Day</a>
+                                                <a href="/pentecost-banners/" class="subcat-children-link">Pentecost</a>
+                                                <a href="/fathers-day/" class="subcat-children-link">Fathers Day</a>
+                                            </li>
+                                            <li>
+                                                <a href="/church-banner-sets/" class="parent-subcat-link">Themes</a>
+                                                <a href="/bible-story-banners/" class="subcat-children-link">Bible
+                                                    Stories</a>
+                                                <a href="/i-am-banners/" class="subcat-children-link">I Am</a>
+                                                <a href="/names-of-christ/" class="subcat-children-link">Names of
+                                                    Christ</a>
+                                                <a href="/names-of-god/" class="subcat-children-link">Names of God</a>
+                                                <a href="/fruit-of-the-spirit/" class="subcat-children-link">Fruit of
+                                                    the Spirit</a>
+                                                <a href="/encouraging-church-banners/"
+                                                    class="subcat-children-link">Encouraging</a>
+                                                <a href="/baptism-banners/" class="subcat-children-link">Baptism</a>
+                                                <a href="/the-mosaic-series/" class="subcat-children-link">Mosaic</a>
+                                                <a href="/identity/" class="subcat-children-link">Identity</a> 
+                                                <a href="/commandment/" class="subcat-children-link">Commandment</a>
+                                                <a href="/church-banner-sets/" class="subcat-children-link">View all
+                                                    Themes</a>
+
+                                            </li>
+                                            <li>
+                                                <a class="parent-subcat-link" href="/ministry-banners/">Ministry</a>
+                                                <a class="subcat-children-link" href="/kids-ministry/">Children's</a>
+                                                <a class="subcat-children-link" href="/coffee-spot-banners/">Coffee</a>
+                                                <a class="subcat-children-link" href="/communion-church-banners/">Communion</a>
+                                                <a class="subcat-children-link" href="/connection-banners/">Connection</a>
+                                                <a class="subcat-children-link" href="/mission-banners/">Mission</a>
+                                                <a class="subcat-children-link" href="/prayer-banners/">Prayer</a>
+                                                <a class="subcat-children-link" href="/student-ministry-banners/">Students</a>
+                                                <a class="subcat-children-link" href="/spanish-banners/">Spanish</a>
+                                                <a class="subcat-children-link" href="/wedding-banners/">Wedding</a>
+                                                <a class="subcat-children-link" href="/church-welcome-banners/">Welcome</a>
+                                                <a class="subcat-children-link" href="/praise-and-worship-banners/">Worship</a>
+                                                <a class="subcat-children-link" href="/vbs-theme-bundles/">VBS</a>
+                                            </li>
+                                            <li class="with-image-li">
+                                                <a href="/commandment/">
+                                                    <img data-src="https://cdn11.bigcommerce.com/s-cnam78/images/stencil/original/image-manager/image.jpg?t=1722500677"
+                                                        src="{{cdn 'img/loading.svg'}}"
+                                                        alt="church banners navigation image block"
+                                                        class="lazyload navcat-image">
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    {{/if}}
+                                    {{#if (lowercase (dashcase name)) '==' 'feather-flags'}}
+                                    <div class="container-ul-sub parent-sub-category-id-{{id}}">
+                                        <ul class="parent-sub-category">
+                                            <li>
+                                                <a href="/feather-banners/" class="parent-subcat-link">Stock Designs</a>
+                                                <a href="/welcome-feather-banners/"
+                                                    class="subcat-children-link">Welcome</a>
+                                                <a href="/easter-feather-flags/" class="subcat-children-link">Easter</a>
+                                                <a href="/mothers-day-feather-flags"
+                                                    class="subcat-children-link">Mothers</a>
+                                                <a href="/fathers-day-feathers/" class="subcat-children-link">Fathers</a>    
+                                                <a href="/vbs-feather-flags/" class="subcat-children-link">Kids-VBS</a>
+                                                <a href="/welcome-feather-banners/" class="subcat-children-link">Connect</a>
+                                                <a href="/christmas-feather-flags/"
+                                                    class="subcat-children-link">Christmas</a>
+                                                <a href="/fall-feather-flags/"
+                                                    class="subcat-children-link">Fall-Harvest</a>
+                                            </li>
+                                            <li>
+                                                <a href="/flag-banners/" class="parent-subcat-link">Custom Flags</a>
+                                                <a href="/outdoor-solutions/feather-banners/custom-feather-flag/"
+                                                    class="subcat-children-link">Custom Feather</a>
+                                                <a href="/kids-ministry/children-teardrop-flags/custom-teardrop-flag/"
+                                                    class="subcat-children-link">Teardrop Flag</a>
+                                                <a href="/outdoor-solutions/custom-rectangular-flag/"
+                                                    class="subcat-children-link">Rectangle</a>
+                                                <a href="/flag-hardware/" class="subcat-children-link">Flag Hardware</a>
+                                            </li>
+                                            <li class="with-image-li">
+                                                <a href="/welcome-feather-banners/">
+                                                    <img data-src="https://cdn11.bigcommerce.com/s-cnam78/images/stencil/original/image-manager/image-1.jpg?t=1722500679"
+                                                        src="{{cdn 'img/loading.svg'}}"
+                                                        alt="church banners navigation image block"
+                                                        class="lazyload navcat-image">
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    {{/if}}
+                                    {{#if (lowercase (dashcase name)) '==' 'backdrop-banners'}}
+                                    <div class="container-ul-sub parent-sub-category-id-{{id}}">
+                                        <ul class="parent-sub-category">
+                                            <li>
+                                                <a href="/welcome-backdrop-banner/" class="parent-subcat-link">Stock
+                                                    Designs</a>
+                                                <a href="/welcome-backdrop-banner/"
+                                                    class="subcat-children-link">Welcome</a>
+                                                <a href="/kids-backdrop-banners/"
+                                                    class="subcat-children-link">Kids/Youth</a>
+                                                <a href="/design-collections-1/" class="subcat-children-link">New
+                                                    Designs</a>
+                                                <a href="/christmas-backdrop-banners/"
+                                                    class="subcat-children-link">Christmas</a>
+                                                <a href="/easter-backdrops/" class="subcat-children-link">Easter</a>
+                                                <a href="/fathers-day-backdrops/" class="subcat-children-link">Father's
+                                                    Day</a>
+                                                <a href="/mothers-day/" class="subcat-children-link">Mother's Day</a>
+                                                <a href="/thanksgiving-backdrops/" class="subcat-children-link">Thanks
+                                                    giving</a>
+                                                <a href="/baptism-backdrop/" class="subcat-children-link">Baptism</a>
+                                            </li>
+                                            <li>
+                                                <a href="/backdrop-banners/" class="parent-subcat-link">Custom
+                                                    Backdrop</a>
+                                                <a href="/church-banners/custom-fabric-backdrop-display/"
+                                                    class="subcat-children-link">Fabric Backdrop</a>
+                                                <a href="/indoor-solutions/tension-backdrop-display-straight/"
+                                                    class="subcat-children-link">Straight Tension</a>
+                                                <a href="/indoor-solutions/tension-backdrop-display-curve/"
+                                                    class="subcat-children-link">Curve Tension</a>
+                                                <a href="/online-service-tools/pop-up-velcro-display-straight/"
+                                                    class="subcat-children-link">Popup Velcro</a>
+                                            </li>
+                                            <li class="with-image-li">
+                                                <a href="/indoor-solutions/tension-backdrop-display-straight/">
+                                                    <img data-src="https://cdn11.bigcommerce.com/s-cnam78/images/stencil/original/image-manager/image-2.jpg?t=1722500680"
+                                                        src="{{cdn 'img/loading.svg'}}"
+                                                        alt="church banners navigation image block"
+                                                        class="lazyload navcat-image">
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    {{/if}}
+                                    {{#if (lowercase (dashcase name)) '==' 'light-pole-banners'}}
+                                    <div class="container-ul-sub parent-sub-category-id-{{id}}">
+                                        <ul class="parent-sub-category">
+                                            <li>
+                                                <span class="parent-subcat-link">Parking Lot</span>
+                                                <a href="/welcome-light-pole-banners/"
+                                                    class="subcat-children-link">Welcome</a>
+                                                <a href="/light-pole-christmas-banners/"
+                                                    class="subcat-children-link">Christmas</a>
+                                                <a href="/easter-light-pole-banner/"
+                                                    class="subcat-children-link">Easter</a>
+                                                <a href="/fall-light-pole-banners/"
+                                                    class="subcat-children-link">Fall/Harvest</a>
+                                                <a href="/patriotic-light-pole-banners/"
+                                                    class="subcat-children-link">Patriotic</a>
+                                                <a href="/church-banners/custom-light-pole-banner/"
+                                                    class="subcat-children-link">Custom</a>
+                                                <a href="https://www.churchbanners.com/stands-displays/bs008-light-pole-hardware-kit/" class="parent-subcat-link">Hardware</a>
+
+                                            </li>
+                                            <li class="with-image-li">
+                                                <a href="/welcome-light-pole-banners/">
+                                                    <img data-src="https://cdn11.bigcommerce.com/s-cnam78/images/stencil/original/image-manager/image-3.jpg?t=1722500682"
+                                                        src="{{cdn 'img/loading.svg'}}"
+                                                        alt="church banners navigation image block"
+                                                        class="lazyload navcat-image">
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    {{/if}}
+                                    {{#if (lowercase (dashcase name)) '==' 'stands-displays'}}
+                                    <div class="container-ul-sub parent-sub-category-id-{{id}}">
+                                        <ul class="parent-sub-category">
+                                            <li>
+                                                <a href="/indoor-banner-solutions/" class="parent-subcat-link">Indoor
+                                                    Displays</a>
+                                                <a href="/retractable-banners/" class="subcat-children-link">Retractable
+                                                    Banner</a>
+                                                <a href="/tension-displays/" class="subcat-children-link">3ft Tension
+                                                    Displays</a>
+                                                <a href="/stands-displays/rizor-display-stand/"
+                                                    class="subcat-children-link">Rizor Banner Stands</a>
+                                                <a href="/bs007-luxury-rollup/" class="subcat-children-link">Luxury
+                                                    Rollup Display</a>
+                                                <a href="/stands-displays/bs002-x-stand-with-banner/"
+                                                    class="subcat-children-link">X-Stands</a>
+                                                <a href="/indoor-solutions/poster-floor-stand/"
+                                                    class="subcat-children-link">Poster Floor Stand</a>
+                                                <a href="https://www.churchbanners.com/customize/seg-wall-mounted-fabric-19mm-silver/"
+                                                    class="subcat-children-link">SEG Wall Display</a>
+                                            </li>
+                                            <li>
+                                                <span class="parent-subcat-link">Podium & Check in Displays</span>
+                                                <a href="/indoor-solutions/podium-popup-counter/"
+                                                    class="subcat-children-link">Podium Popup Counter</a>
+                                                <a href="/table-throws/" class="subcat-children-link">Table Throws</a>
+                                                <a href="/church-banners/custom-stretch-table-cover/"
+                                                    class="subcat-children-link">Stretch Table Cover</a>
+                                                <a href="/tension-displays/" class="subcat-children-link">3ft Tension
+                                                    Displays</a>
+                                                <a href="/retractable-banners/" class="subcat-children-link">Popup
+                                                    Banner</a>
+                                            </li>
+                                            <li>
+                                                <a href="/outdoor-banner-solution/"
+                                                    class="parent-subcat-link">Outdoor</a>
+                                                <a href="/flag-banners/" class="subcat-children-link">Feather Flags</a>
+                                                <a href="/sidewalk-signs/" class="subcat-children-link">Sandwich
+                                                    Sign</a>
+                                                <a href="/welcome-light-pole-banners/"
+                                                    class="subcat-children-link">Light Pole Banners</a>
+                                                <a href="https://www.churchbanners.com/custom-a-frame-banner-display-8ft/"
+                                                    class="subcat-children-link">A-Frame Banner</a>
+                                                <a href="/online-service-tools/event-tent-display-full-color/"
+                                                    class="subcat-children-link">Event Tent</a>
+                                            </li>
+                                            <li class="not-abs">
+                                                <a href="/hardware-1/" class="parent-subcat-link">Hardware</a>
+                                                <a href="/hardware-1/" class="subcat-children-link">Hardware &
+                                                    Accessories</a>
+                                                <a href="/church-signs/" class="subcat-children-link">Church Sign</a>
+                                            </li>
+                                            <li class="with-image-li">
+                                                <a href="/indoor-banner-solutions/">
+                                                    <img data-src="https://cdn11.bigcommerce.com/s-cnam78/images/stencil/original/image-manager/image-4.jpg?t=1722500684"
+                                                        src="{{cdn 'img/loading.svg'}}"
+                                                        alt="church banners navigation image block"
+                                                        class="lazyload navcat-image">
+                                                </a>
+                                            </li>
+
+                                        </ul>
+                                    </div>
+                                    {{/if}}
+                                    {{#if (lowercase (dashcase name)) '==' 'kids-ministry'}}
+                                    <div class="container-ul-sub parent-sub-category-id-{{id}}">
+                                        <ul class="parent-sub-category">
+                                            <li>
+                                                <a href="/children-ministry-banners"
+                                                    class="parent-subcat-link">Indoor</a>
+                                                <a href="/children-welcome-banners/"
+                                                    class="subcat-children-link">Check-in Banners</a>
+                                                <a href="/children-d2-rollup-displays/"
+                                                    class="subcat-children-link">Retractables</a>
+                                                <a href="/children-ministry-banners" class="subcat-children-link">Wall
+                                                    Banners</a>
+                                                <a href="/bible-story-banners/" class="subcat-children-link">Bible
+                                                    Stories</a>
+                                                <a href="/kids-ministry-table-throws/"
+                                                    class="subcat-children-link">Table Throws</a>
+                                                <a href="/vbs-theme-bundles/" class="subcat-children-link">VBS</a>
+                                                <a href="/kids-ministry/" class="subcat-children-link">Kids
+                                                    Collection</a>
+                                                <a href="/childrens-vbs-banners/" class="subcat-children-link">Welcome
+                                                    Banners</a>
+                                            </li>
+                                            <li>
+                                                <a href="/outdoor-vbs-banners/" class="parent-subcat-link">Outdoor</a>
+                                                <a href="/outdoor-vbs-banners/" class="subcat-children-link">Vinyl
+                                                    Banners</a>
+                                                <a href="/vbs-feather-flags/" class="subcat-children-link">Feather
+                                                    Banner</a>
+                                                <a href="/sidewalk-signs-2/" class="subcat-children-link">Sidewalk
+                                                    Signs</a>
+                                                <a href="/children-teardrop-flags/"
+                                                    class="subcat-children-link">Teardrop Flag</a>
+                                                <a href="/kids-welcome-signs/" class="subcat-children-link">Handheld
+                                                    Signs</a>
+                                            </li>
+                                            <li> 
+                                                <a class="parent-subcat-link"   href="/student-ministry-banners/">Youth</a>
+                                                <a class="subcat-children-link" href="/student-ministry-banners/">Student Ministry</a>
+                                            </li>
+                                            <li class="with-image-li">
+                                                <a href="/vbs-theme-bundles/">
+                                                    <img data-src="https://cdn11.bigcommerce.com/s-cnam78/images/stencil/original/image-manager/image-5.jpg?t=1722500686"
+                                                        src="{{cdn 'img/loading.svg'}}"
+                                                        alt="church banners navigation image block"
+                                                        class="lazyload navcat-image">
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    {{/if}}
+                                    {{#if (lowercase (dashcase name)) '==' 'outdoor-signs'}}
+                                    <div class="container-ul-sub parent-sub-category-id-{{id}}">
+                                        <ul class="parent-sub-category">
+                                            <li>
+                                                <a href="https://www.churchbanners.com/outdoor-banner-solution/" class="parent-subcat-link">Stock
+                                                    Designs</a>
+                                                <a href="https://www.churchbanners.com/outdoor-church-banners/" class="subcat-children-link">Vinyl
+                                                    Banners</a>
+                                                <a href="https://www.churchbanners.com/lightpole-banners/" class="subcat-children-link">Light
+                                                    Pole Banner</a>
+                                                <a href="https://www.churchbanners.com/sidewalk-signs/"
+                                                    class="subcat-children-link">Sidewalk Signs</a>
+                                                <a href="https://www.churchbanners.com/online-service-tools/event-tent-display-full-color/" class="subcat-children-link">Event
+                                                    Tent</a>
+                                                <a href="https://www.churchbanners.com/handheld-signs/"
+                                                    class="subcat-children-link">Handheld Signs</a>
+                                                <a href="https://www.churchbanners.com/custom-a-frame-banner-display-8ft/"
+                                                    class="subcat-children-link">A-Frame Banner</a>
+                                                <a href="https://www.churchbanners.com/church-banners/custom-banners/billboard-building-vinyl/" class="subcat-children-link">Large
+                                                    Building Banners</a>
+                                                <a href="https://www.churchbanners.com/flag-banners/" class="subcat-children-link">Flag
+                                                    Banners</a>
+                                                <a href="https://www.churchbanners.com/teardrop-flags/"
+                                                    class="subcat-children-link">Teardrop Flags</a>
+                                                <a href="https://www.churchbanners.com/yard-sign/" class="subcat-children-link">Yard
+                                                    Signs</a>
+                                                <a href="https://www.churchbanners.com/church-banners/church-signs/aluminum-church-sign/"
+                                                    class="subcat-children-link">Aluminum Signs</a>
+                                            </li>
+                                            <li class="with-image-li">
+                                                <img data-src="https://cdn11.bigcommerce.com/s-cnam78/images/stencil/original/image-manager/image-6.jpg?t=1722500688"
+                                                    src="{{cdn 'img/loading.svg'}}"
+                                                    alt="church banners navigation image block"
+                                                    class="lazyload navcat-image">
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    {{/if}}
+                                    {{#if (lowercase (dashcase name)) '==' 'customize'}}
+                                    <div class="container-ul-sub parent-sub-category-id-{{id}}">
+                                        <ul class="parent-sub-category">
+                                            <li>
+                                                <a href="/custom-banners/" class="parent-subcat-link">Custom
+                                                    Printing</a>
+                                                <a href="/custom-banners-cat/" class="subcat-children-link">Custom
+                                                    banner</a>
+                                                <a href="/stands-displays-cat/" class="subcat-children-link">Custom
+                                                    Display</a>
+                                                <a href="/church-signs/" class="subcat-children-link">Custom Signs</a>
+                                                <a href="/church-banners/handheld-signs/custom-circle-handheld-sign/"
+                                                    class="subcat-children-link">Circle Handheld</a>
+                                                <a href="/church-banners/handheld-signs/custom-handheld-sign/"
+                                                    class="subcat-children-link">Square Handheld</a>
+                                                <a href="/church-banners/custom-banners/billboard-building-vinyl/"
+                                                    class="subcat-children-link">Billboards</a>
+                                                <a href="/print-my-artwork/" class="subcat-children-link">Your Artwork</a>
+                                            </li>
+                                            <li>
+                                                <a href="/custom-banner-options/" class="parent-subcat-link">Need Design
+                                                    Help?</a>
+                                                <a href="/free-proof-request/" class="subcat-children-link">Free Proof
+                                                    Request</a>
+                                                <a href="/request-a-free-quote-or-consultation/"
+                                                    class="subcat-children-link">Custom Quote</a>
+                                                <a href="/catalog/" class="subcat-children-link">Free Samples</a>
+                                                <a href="/banner-templates/" class="subcat-children-link">Design
+                                                    Templates</a>
+                                            </li>
+                                            <li class="with-image-li">
+                                                <img data-src="https://cdn11.bigcommerce.com/s-cnam78/images/stencil/original/image-manager/image-7.jpg?t=1722500690"
+                                                    src="{{cdn 'img/loading.svg'}}"
+                                                    alt="church banners navigation image block"
+                                                    class="lazyload navcat-image">
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    {{/if}}
+                                    {{#if (lowercase (dashcase name)) '==' 'templates-videos-more'}}
+                                    <div class="container-ul-sub parent-sub-category-id-{{id}}">
+                                        <ul class="parent-sub-category">
+                                            <li>
+                                                <a href="/videos/" class="subcat-children-link">Video Tutorials</a>
+                                                <a href="/banner-templates/" class="subcat-children-link">Templates</a>
+                                                <a href="https://firstimpressions.churchbanners.com/"
+                                                    class="subcat-children-link">Our Blog</a>
+                                                <a href="/catalog/" class="subcat-children-link">Free Catalog</a>
+                                                <a href="/request-a-free-quote-or-consultation/"
+                                                    class="subcat-children-link">Request a Quote</a>
+                                                <a href="/custom-designs/" class="subcat-children-link">FAQ</a>
+                                                <a href="/shipping-info/" class="subcat-children-link">Shipping &
+                                                    Delivery</a>
+                                                <a href="/free-proof/" class="subcat-children-link">Free Proof</a>
+                                            </li>
+                                            <li class="with-image-li">
+                                                <img data-src="https://cdn11.bigcommerce.com/s-cnam78/images/stencil/original/image-manager/image-8.jpg?t=1722500691"
+                                                    src="{{cdn 'img/loading.svg'}}"
+                                                    alt="church banners navigation image block"
+                                                    class="lazyload navcat-image">
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    {{/if}}
+                                </li>
+
+                                {{/inArray}}
+                                {{/each}}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="nav-title cc desktop-nav-cc">
+                <div class="container-header-category">
+                    <span class="main-mobile-nav">Categories</span> <svg>
+                        <use xlink:href="#icon-chevron-down"></use>
+                    </svg>
+                </div>
+            </div>
+
+            <!--<div class="nav-title">-->
+            <!--    <div class="container-header-category">-->
+            <!--        <a class="main-mobile-nav" href="/about-us">About Us</a>-->
+            <!--    </div>-->
+            <!--</div>-->
+            <div class="nav-title link-parent">
+                <div class="container-header-category">
+                    <span class="main-mobile-nav">Resources</span> <svg>
+                        <use xlink:href="#icon-chevron-down"></use>
+                    </svg>
+                </div>
+                <div class="resources-container-desktop" >
+                    <!--<a href="/pricing/">Pricing</a>-->
+                    <a style="font-weight:normal;" href="/about-us">About us</a>
+                    <a style="font-weight:normal;" href="/banner-templates/">Templates</a>
+                    <a style="font-weight:normal;" href="/blog">Blog</a>
+                    <a style="font-weight:normal;" href="/videos">Videos</a>  
+                    <a style="font-weight:normal;" href="/about-us-1/#gallery-zone">Gallery</a>
+                    <a style="font-weight:normal;" href="/free-proof-request/">Free Proof</a> 
+                    <a style="font-weight:normal;" href="/request-a-free-quote-or-consultation/">Request Quote</a>
+                    <a style="font-weight:normal;" href="/catalog/">Free Catalog</a>
+                    <a style="font-weight:normal;" href="/custom-designs/">FAQ</a>
+                    <a style="font-weight:normal;" href="/shipping-info/">Shipping</a>            
+
+                    <!--<a style="font-weight:normal;" href="/custom-banners/">Custom</a>-->
+                </div>
+
+            </div>
+            
+
+
+
+
+            <div class="nav-title link-parent cb-nav">
+                <div class="container-header-category">
+                    <span class="main-mobile-nav">Custom Banners</span> <svg>
+                        <use xlink:href="#icon-chevron-down"></use>
+                    </svg>
+                </div>
+                <div class="resources-container-desktop" id="custom-bn">
+                    <a style="font-weight:normal;" href="/church-banners/custom-banners/custom-banner-outdoor/"><svg><use xlink:href="#icon-custom-vinyl"></use></svg><span>Custom Vinyl Banners</span></a>
+                    <a style="font-weight:normal;" href="/stands-displays/indoor-solutions/polyester-fabric-banner/"><svg><use xlink:href="#icon-custom-fabric"></use></svg><span>Custom Fabric Banners</span></a>
+                    <a style="font-weight:normal;" href="/outdoor-solutions/feather-banners/custom-feather-flag/"><svg><use xlink:href="#icon-custom-feather"></use></svg>Custom Feather Flags</a>
+                    <a style="font-weight:normal;" href="/church-banners/handheld-signs/custom-handheld-sign/"><svg><use xlink:href="#icon-custom-handheld"></use></svg><span>Custom Handheld Signs</span></a>
+                    <a href="/custom-banners" class="button-yellow p-mulish bold contrast-yellow" style="color:white;margin-bottom:0 !important;">View All Custom Products</a>
+                </div>
+
+            </div>
+
+
+
+            <div class="nav-title">
+                <div class="container-header-category">
+                    <a class="main-mobile-nav" {{!--style="color:#e9a908;font-weight:bolder;"--}} href="/pricing">Pricing</a>
+                </div>
+            </div>
+            <div class="container-search-and-account cc-desktop">
+                <div class="container-search-custom">
+                    <form action="{{urls.search}}" method="get">
+                        <div class="container-field-search s_desktop">
+                            <input type="text" name="search_query" placeholder="Search">
+                            <button type="submit"><svg>
+                                    <use xlink:href="#icon-search"></use>
+                                </svg></button>
+                        </div>
+                    </form>
+                </div>
+                <div class="desktop-account-container">
+                    <a href="/account.php" class="main-account">
+                        <svg>
+                            <use xlink:href="#icon-user-account"></use>
+                        </svg>
+                    </a>
+                    <div class="cart-account">
+
+                        <a style="text-decoration: none;" data-cart-preview data-dropdown="cart-preview-dropdown"
+                            data-options="align:right" href="{{urls.cart}}" aria-label="{{lang 'cart.nav_aria_label'}}">
+                            <svg>
+                                <use xlink:href="#icon-cart"></use>
+                            </svg>
+                            <span class="countPill cart-quantity"></span>
+                        </a>
+
+                        <div class="dropdown-menu" id="cart-preview-dropdown" data-dropdown-content aria-hidden="true">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="desktop-nav col-nav category" style="top:100%;position:absolute;">
+            <div class="container-parent-category">
+                <ul class="u-categ">
+                    {{#each categories}}
+                    {{#inArray (split
+                    'church-banners|feather-flags|backdrop-banners|light-pole-banners|stands-displays|kids-ministry|outdoor-signs|customize|templates-videos-more'
+                    '|') (lowercase (dashcase name))}}
+                    <li class="p-categ p-categ-{{id}}">
+                        <a class="parent-category"  href="{{#if (lowercase (dashcase name)) '==' 'church-banners'}}/church-banners{{else if settings.requests.absolute_path '==' '/church-banners-cat/'}}/church-banners{{else if (lowercase (dashcase name)) '==' 'kids-ministry'}}/kids-ministry{{else if (lowercase (dashcase name)) '=='  'feather-flags'}}/feather-flags{{else if (lowercase (dashcase name)) '=='  'light-pole-banners'}}/lightpole-banners{{else if (lowercase (dashcase name)) '==' 'backdrop-banners'}}/backdrop-banners{{else if (lowercase (dashcase name)) '==' 'stands-displays'}}/stands-displays{{else if (lowercase (dashcase name)) '==' 'customize'}}/custom-banners{{else if (lowercase (dashcase name)) '=='  'outdoor-signs'}}/outdoor-banner-solution{{else if (lowercase (dashcase name) '==' 'templates-videos-more')}}/banner-resources{{/if}}" parent-category-id="{{id}}">
+                            <img data-src="
+                                            {{#if (lowercase (dashcase name)) '==' 'church-banners'}}
+
+                                                https://cdn11.bigcommerce.com/s-cnam78/stencil/a1b1fd80-71ec-013c-c6ef-52867ecfc7a5/e/e989b8f0-d51e-013c-2337-5a0a81ead570/img/images/Church.png
+                                            
+                                            {{else if (lowercase (dashcase name)) '==' 'feather-flags'}}
+
+                                                https://cdn11.bigcommerce.com/s-cnam78/stencil/a1b1fd80-71ec-013c-c6ef-52867ecfc7a5/e/e989b8f0-d51e-013c-2337-5a0a81ead570/img/images/flights.png
+                                            
+                                            {{else if (lowercase (dashcase name)) '==' 'backdrop-banners'}}
+                                            
+                                                https://cdn11.bigcommerce.com/s-cnam78/stencil/a1b1fd80-71ec-013c-c6ef-52867ecfc7a5/e/e989b8f0-d51e-013c-2337-5a0a81ead570/img/images/Shape.png
+
+                                            {{else if (lowercase (dashcase name)) '==' 'light-pole-banners'}}
+
+                                                https://cdn11.bigcommerce.com/s-cnam78/stencil/a1b1fd80-71ec-013c-c6ef-52867ecfc7a5/e/e989b8f0-d51e-013c-2337-5a0a81ead570/img/images/light-pole.png
+
+                                            {{else if (lowercase (dashcase name)) '==' 'stands-displays'}}
+
+                                                https://cdn11.bigcommerce.com/s-cnam78/stencil/a1b1fd80-71ec-013c-c6ef-52867ecfc7a5/e/e989b8f0-d51e-013c-2337-5a0a81ead570/img/images/stand.png
+                                            
+                                            {{else if (lowercase (dashcase name)) '==' 'kids-ministry'}}
+
+                                                https://cdn11.bigcommerce.com/s-cnam78/stencil/a1b1fd80-71ec-013c-c6ef-52867ecfc7a5/e/e989b8f0-d51e-013c-2337-5a0a81ead570/img/images/Kids.png    
+
+                                            {{else if (lowercase (dashcase name)) '==' 'outdoor-signs'}}
+
+                                                https://cdn2.bigcommerce.com/n-nr1m3w/cnam78/product_images/uploaded_images/custom1.png
+                                            
+                                            {{else if (lowercase (dashcase name)) '==' 'customize'}}
+
+                                                https://cdn11.bigcommerce.com/s-cnam78/stencil/a1b1fd80-71ec-013c-c6ef-52867ecfc7a5/e/e989b8f0-d51e-013c-2337-5a0a81ead570/img/images/Custom.png
+
+                                            {{else if (lowercase (dashcase name)) '==' 'templates-videos-more'}}
+
+                                                https://cdn11.bigcommerce.com/s-cnam78/stencil/a1b1fd80-71ec-013c-c6ef-52867ecfc7a5/e/e989b8f0-d51e-013c-2337-5a0a81ead570/img/images/Video.png
+
+                                            {{/if}}" src="{{cdn 'img/loading.svg'}}" alt="Navigation {{name}} icon"
+                                class="lazyload img-icon">
+                            <span class="nav-name">{{name}}</span>
+                        </a>
+                        {{#if ../theme_settings.navigation_mode '==' 'dynamic'}}
+
+                        <div class="container-ul-sub parent-sub-category-id-{{id}}">
+                            <ul class="parent-sub-category">
+                                {{#each children}}
+                                <li>
+                                    <a href="{{url}}" class="parent-subcat-link">{{name}}</a>
+                                    {{#each children}}
+                                    <a href="{{url}}" class="subcat-children-link">{{name}}</a>
+                                    {{/each}}
+                                </li>
+                                {{/each}}
+                                <ul>
+                        </div>
+
+                        {{else if ../theme_settings.navigation_mode '==' 'hardcode'}}
+                        {{#if (lowercase (dashcase name)) '==' 'church-banners'}}
+                        <div class="container-ul-sub parent-sub-category-id-{{id}}">
+                            <ul class="parent-sub-category">
+                                <li>
+                                    <a href="/church-banners/" class="parent-subcat-link">Popular</a>
+                                    <a href="/church-banners/" class="subcat-children-link">Church Banners</a>
+                                    <a href="/church-signs/" class="subcat-children-link">Church Signs</a>
+                                    <a href="/church-welcome-banners/" class="subcat-children-link">Welcome</a>
+                                    <a href="/wedding-banners/" class="subcat-children-link">Wedding</a>
+                                    <a href="/baptism-banners/" class="subcat-children-link">Baptism</a>
+                                    <a href="/design-collections-1/" class="subcat-children-link">Design Sets</a>
+                                    <a href="/seasonal-church-banners/" class="subcat-children-link">Seasonal</a>
+                                    <a href="/apparel/" class="subcat-children-link">Apparel</a>
+                                    <a href="/handheld-signs/" class="subcat-children-link">Handheld Signs</a>
+                                    <a href="/retractable-banners/" class="subcat-children-link">Retractable Banner</a>
+                                    <a href="/spanish-banners/" class="subcat-children-link">Spanish Banners</a>
+                                    <a href="/anniversary-banner/" class="subcat-children-link">Anniversary</a>
+
+                                </li>
+                                <li>
+                                    <a href="/seasonal-church-banners/" class="parent-subcat-link">Seasonal</a>
+                                    <a href="/lent-banners/" class="subcat-children-link">Lent</a>
+                                    <a href="/easter-banners/" class="subcat-children-link">Easter</a>
+                                    <a href="/mothers-day/" class="subcat-children-link">Mothers Day</a>
+                                    <a href="/pentecost-banners/" class="subcat-children-link">Pentecost</a>
+                                    <a href="/fathers-day/" class="subcat-children-link">Fathers Day</a>
+                                    <a href="/spring-worship-banners/" class="subcat-children-link">Spring</a>
+                                    <a href="/summer-banners/" class="subcat-children-link">Summer</a>
+                                    <a href="/patriotic-banners/" class="subcat-children-link">Patriotic</a>
+                                    <a href="/thanksgiving-banners" class="subcat-children-link">Fall Harvest</a>
+                                    <a href="/advent-banners/" class="subcat-children-link">Advent</a>
+                                    <a href="/christmas-banners/" class="subcat-children-link">Christmas</a>
+                                    <a href="/new-year-banners/" class="subcat-children-link">New Year</a>
+                                    <a href="/winter-banners/" class="subcat-children-link">Winter</a>
+                                </li>
+                                <li>
+                                    <a href="/church-banner-sets/" class="parent-subcat-link">Themes</a>
+                                    <a href="/bible-story-banners/" class="subcat-children-link">Bible Stories</a>
+                                    <a href="/i-am-banners/" class="subcat-children-link">I Am</a>
+                                    <a href="/names-of-christ/" class="subcat-children-link">Names of Christ</a>
+                                    <a href="/names-of-god/" class="subcat-children-link">Names of God</a>
+                                    <a href="/fruit-of-the-spirit/" class="subcat-children-link">Fruit of the Spirit</a>
+                                    <a href="/encouraging-church-banners/" class="subcat-children-link">Encouraging</a>
+                                    <a href="/baptism-banners/" class="subcat-children-link">Baptism</a>
+                                    <a href="/the-mosaic-series/" class="subcat-children-link">Mosaic</a>
+                                    <a href="/identity/" class="subcat-children-link">Identity</a>
+                                    <a href="/commandment/" class="subcat-children-link">Commandment</a>
+                                    <a href="/church-banner-sets/" class="subcat-children-link">View all Themes</a>
+
+                                </li>
+                                 <li>
+                                                <a class="parent-subcat-link" href="/ministry-banners/">Ministry</a>
+                                                <a class="subcat-children-link" href="/kids-ministry/">Children's</a>
+                                                <a class="subcat-children-link" href="/coffee-spot-banners/">Coffee</a>
+                                                <a class="subcat-children-link" href="/communion-church-banners/">Communion</a>
+                                                <a class="subcat-children-link" href="/connection-banners/">Connection</a>
+                                                <a class="subcat-children-link" href="/mission-banners/">Mission</a>
+                                                <a class="subcat-children-link" href="/summer-banners/">Outreach</a>
+                                                <a class="subcat-children-link" href="/prayer-banners/">Prayer</a>
+                                                <a class="subcat-children-link" href="/student-ministry-banners/">Students</a>
+                                                <a class="subcat-children-link" href="/spanish-banners/">Spanish</a>
+                                                <a class="subcat-children-link" href="/wedding-banners/">Wedding</a>
+                                                <a class="subcat-children-link" href="/church-welcome-banners/">Welcome</a>
+                                                <a class="subcat-children-link" href="/praise-and-worship-banners/">Worship</a>
+                                                <a class="subcat-children-link" href="/vbs-theme-bundles/">VBS</a>
+                                </li>
+                                <li>
+                                    <a href="/commandment/">
+                                        <img data-src="https://cdn11.bigcommerce.com/s-cnam78/images/stencil/original/image-manager/image.jpg?t=1722500677"
+                                            src="{{cdn 'img/loading.svg'}}" alt="church banners navigation image block"
+                                            class="lazyload navcat-image">
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        {{/if}}
+                        {{#if (lowercase (dashcase name)) '==' 'feather-flags'}}
+                        <div class="container-ul-sub parent-sub-category-id-{{id}}">
+                            <ul class="parent-sub-category">
+                                <li>
+                                    <a href="/feather-banners/" class="parent-subcat-link">Stock Designs</a>
+                                    <a href="/welcome-feather-banners/" class="subcat-children-link">Welcome</a>
+                                    <a href="/easter-feather-flags/" class="subcat-children-link">Easter</a>
+                                    <a href="/mothers-day-feather-flags" class="subcat-children-link">Mothers</a>
+                                    <a href="/fathers-day-feathers/" class="subcat-children-link">Fathers</a> 
+                                    <a href="/vbs-feather-flags/" class="subcat-children-link">Kids-VBS</a>
+                                    <a href="/welcome-feather-banners/" class="subcat-children-link">Connect</a>
+                                    <a href="/christmas-feather-flags/" class="subcat-children-link">Christmas</a>
+                                    <a href="/fall-feather-flags/" class="subcat-children-link">Fall-Harvest</a>
+                                </li>
+                                <li>
+                                    <a href="/flag-banners/" class="parent-subcat-link">Custom Flags</a>
+                                    <a href="/outdoor-solutions/feather-banners/custom-feather-flag/"
+                                        class="subcat-children-link">Custom Feather</a>
+                                    <a href="/kids-ministry/children-teardrop-flags/custom-teardrop-flag/"
+                                        class="subcat-children-link">Teardrop Flag</a>
+                                    <a href="/outdoor-solutions/custom-rectangular-flag/"
+                                        class="subcat-children-link">Rectangle</a>
+                                    <a href="/flag-hardware/" class="subcat-children-link">Flag Hardware</a>
+                                </li>
+                                <li>
+                                    <a href="/welcome-feather-banners/">
+                                        <img data-src="https://cdn11.bigcommerce.com/s-cnam78/images/stencil/original/image-manager/image-1.jpg?t=1722500679"
+                                            src="{{cdn 'img/loading.svg'}}" alt="church banners navigation image block"
+                                            class="lazyload navcat-image">
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        {{/if}}
+                        {{#if (lowercase (dashcase name)) '==' 'backdrop-banners'}}
+                        <div class="container-ul-sub parent-sub-category-id-{{id}}">
+                            <ul class="parent-sub-category">
+                                <li>
+                                    <a href="/welcome-backdrop-banner/" class="parent-subcat-link">Stock Designs</a>
+                                    <a href="/welcome-backdrop-banner/" class="subcat-children-link">Welcome</a>
+                                    <a href="/kids-backdrop-banners/" class="subcat-children-link">Kids/Youth</a>
+                                    <a href="/design-collections-1/" class="subcat-children-link">New Designs</a>
+                                    <a href="/christmas-backdrop-banners/" class="subcat-children-link">Christmas</a>
+                                    <a href="/easter-backdrops/" class="subcat-children-link">Easter</a>
+                                    <a href="/fathers-day-backdrops/" class="subcat-children-link">Father's Day</a>
+                                    <a href="/mothers-day/" class="subcat-children-link">Mother's Day</a>
+                                    <a href="/thanksgiving-backdrops/" class="subcat-children-link">Fall Harvest</a>
+                                    <a href="/baptism-backdrop/" class="subcat-children-link">Baptism</a>
+                                </li>
+                                <li>
+                                    <a href="/backdrop-banners/" class="parent-subcat-link">Custom Backdrop</a>
+                                    <a href="/church-banners/custom-fabric-backdrop-display/"
+                                        class="subcat-children-link">Fabric Backdrop</a>
+                                    <a href="/indoor-solutions/tension-backdrop-display-straight/"
+                                        class="subcat-children-link">Straight Tension</a>
+                                    <a href="/indoor-solutions/tension-backdrop-display-curve/"
+                                        class="subcat-children-link">Curve Tension</a>
+                                    <a href="/online-service-tools/pop-up-velcro-display-straight/"
+                                        class="subcat-children-link">Popup Velcro</a>
+                                </li>
+                                <li>
+                                    <a href="/indoor-solutions/tension-backdrop-display-straight/">
+                                        <img data-src="https://cdn11.bigcommerce.com/s-cnam78/images/stencil/original/image-manager/image-2.jpg?t=1722500680"
+                                            src="{{cdn 'img/loading.svg'}}" alt="church banners navigation image block"
+                                            class="lazyload navcat-image">
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        {{/if}}
+                        {{#if (lowercase (dashcase name)) '==' 'light-pole-banners'}}
+                        <div class="container-ul-sub parent-sub-category-id-{{id}}">
+                            <ul class="parent-sub-category">
+                                <li>
+                                    <span class="parent-subcat-link">Parking Lot</span>
+                                    <a href="/welcome-light-pole-banners/" class="subcat-children-link">Welcome</a>
+                                    <a href="/easter-light-pole-banner/" class="subcat-children-link">Easter</a>
+                                    <a href="/patriotic-light-pole-banners/" class="subcat-children-link">Patriotic</a>
+                                    <a href="/fall-light-pole-banners/" class="subcat-children-link">Fall/Harvest</a>
+                                    <a href="/light-pole-christmas-banners/" class="subcat-children-link">Christmas</a>
+                                    <a href="/church-banners/custom-light-pole-banner/"
+                                        class="subcat-children-link">Custom</a>
+                                    <a href="https://www.churchbanners.com/stands-displays/bs008-light-pole-hardware-kit/" class="parent-subcat-link">Hardware</a>
+
+                                </li>
+                                <li>
+                                    <a href="/welcome-light-pole-banners/">
+                                        <img data-src="https://cdn11.bigcommerce.com/s-cnam78/images/stencil/original/image-manager/image-3.jpg?t=1722500682"
+                                            src="{{cdn 'img/loading.svg'}}" alt="church banners navigation image block"
+                                            class="lazyload navcat-image">
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        {{/if}}
+                        {{#if (lowercase (dashcase name)) '==' 'stands-displays'}}
+                        <div class="container-ul-sub parent-sub-category-id-{{id}}">
+                            <ul class="parent-sub-category">
+                                <li>
+                                    <a href="/indoor-banner-solutions/" class="parent-subcat-link">Indoor Displays</a>
+                                    <a href="/retractable-banners/" class="subcat-children-link">Retractable Banner</a>
+                                    <a href="/tension-displays/" class="subcat-children-link">3ft Tension Displays</a>
+                                    <a href="/stands-displays/rizor-display-stand/" class="subcat-children-link">Rizor
+                                        Banner Stands</a>
+                                    <a href="/bs007-luxury-rollup/" class="subcat-children-link">Luxury Rollup
+                                        Display</a>
+                                    <a href="/stands-displays/bs002-x-stand-with-banner/"
+                                        class="subcat-children-link">X-Stands</a>
+                                    <a href="/indoor-solutions/poster-floor-stand/" class="subcat-children-link">Poster
+                                        Floor Stand</a>
+                                    <a href="https://www.churchbanners.com/customize/seg-wall-mounted-fabric-19mm-silver/"
+                                                    class="subcat-children-link">SEG Wall Display</a>
+                                </li>
+                                <li>
+                                    <span class="parent-subcat-link">Podium & Check in Displays</span>
+                                    <a href="/indoor-solutions/podium-popup-counter/"
+                                        class="subcat-children-link">Podium Popup Counter</a>
+                                    <a href="/table-throws/" class="subcat-children-link">Table Throws</a>
+                                    <a href="/church-banners/custom-stretch-table-cover/"
+                                        class="subcat-children-link">Stretch Table Cover</a>
+                                    <a href="/tension-displays/" class="subcat-children-link">3ft Tension Displays</a>
+                                    <a href="/retractable-banners/" class="subcat-children-link">Popup Banner</a>
+                                </li>
+                                <li>
+                                    <a href="/outdoor-banner-solution/" class="parent-subcat-link">Outdoor</a>
+                                    <a href="/flag-banners/" class="subcat-children-link">Feather Flags</a>
+                                    <a href="/sidewalk-signs/" class="subcat-children-link">Sandwich Sign</a>
+                                    <a href="/welcome-light-pole-banners/" class="subcat-children-link">Light Pole
+                                        Banners</a>
+                                    <a href="/online-service-tools/event-tent-display-full-color/"
+                                        class="subcat-children-link">Event Tent</a>
+                                    <a href="https://www.churchbanners.com/custom-a-frame-banner-display-8ft/"
+                                                    class="subcat-children-link">A-Frame Banner</a>
+                                </li>
+                                <li class="not-abs">
+                                    <a href="/hardware-1/" class="parent-subcat-link">Hardware</a>
+                                    <a href="/hardware-1/" class="subcat-children-link">Hardware & Accessories</a>
+                                    <a href="/church-signs/" class="subcat-children-link">Church Sign</a>
+                                </li>
+                                <li>
+                                    <a href="/indoor-banner-solutions/">
+                                        <img data-src="https://cdn11.bigcommerce.com/s-cnam78/images/stencil/original/image-manager/image-4.jpg?t=1722500684"
+                                            src="{{cdn 'img/loading.svg'}}" alt="church banners navigation image block"
+                                            class="lazyload navcat-image">
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        {{/if}}
+                        {{#if (lowercase (dashcase name)) '==' 'kids-ministry'}}
+                        <div class="container-ul-sub parent-sub-category-id-{{id}}">
+                            <ul class="parent-sub-category">
+                                <li>
+                                    <a href="/children-ministry-banners" class="parent-subcat-link">Indoor</a>
+                                    <a href="/children-welcome-banners/" class="subcat-children-link">Check-in
+                                        Banners</a>
+                                    <a href="/children-d2-rollup-displays/"
+                                        class="subcat-children-link">Retractables</a>
+                                    <a href="/children-ministry-banners" class="subcat-children-link">Wall Banners</a>
+                                    <a href="/bible-story-banners/" class="subcat-children-link">Bible Stories</a>
+                                    <a href="/kids-ministry-table-throws/" class="subcat-children-link">Table Throws</a>
+                                    <a href="/vbs-theme-bundles/" class="subcat-children-link">VBS</a>
+                                    <a href="/kids-ministry/" class="subcat-children-link">Kids Collection</a>
+                                    <a href="/childrens-vbs-banners/" class="subcat-children-link">Welcome Banners</a>
+                                </li>
+                                <li>
+                                    <a href="/outdoor-vbs-banners/" class="parent-subcat-link">Outdoor</a>
+                                    <a href="/outdoor-vbs-banners/" class="subcat-children-link">Vinyl Banners</a>
+                                    <a href="/vbs-feather-flags/" class="subcat-children-link">Feather Banner</a>
+                                    <a href="/sidewalk-signs-2/" class="subcat-children-link">Sidewalk Signs</a>
+                                    <a href="/children-teardrop-flags/" class="subcat-children-link">Teardrop Flag</a>
+                                    <a href="/kids-welcome-signs/" class="subcat-children-link">Handheld Signs</a>
+                                </li>
+                                <li> 
+                                    <a class="parent-subcat-link"   href="/student-ministry-banners/">Youth</a>
+                                    <a class="subcat-children-link" href="/student-ministry-banners/">Student Ministry</a>
+                                </li>
+                                <li>
+                                    <a href="/vbs-theme-bundles/">
+                                        <img data-src="https://cdn11.bigcommerce.com/s-cnam78/images/stencil/original/image-manager/image-5.jpg?t=1722500686"
+                                            src="{{cdn 'img/loading.svg'}}" alt="church banners navigation image block"
+                                            class="lazyload navcat-image">
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        {{/if}}
+                        {{#if (lowercase (dashcase name)) '==' 'outdoor-signs'}}
+                        <div class="container-ul-sub parent-sub-category-id-{{id}}">
+                            <ul class="parent-sub-category">
+                                <li>
+                                    <a href="https://www.churchbanners.com/outdoor-banner-solution/" class="parent-subcat-link">Stock Designs</a>
+                                    <a href="https://www.churchbanners.com/outdoor-church-banners/" class="subcat-children-link">Vinyl Banners</a>
+                                    <a href="https://www.churchbanners.com/lightpole-banners/" class="subcat-children-link">Light Pole
+                                        Banner</a>
+                                    <a href="https://www.churchbanners.com/sidewalk-signs/" class="subcat-children-link">Sidewalk Signs</a>
+                                    <a href="https://www.churchbanners.com/online-service-tools/event-tent-display-full-color/" class="subcat-children-link">Event Tent</a>
+                                    <a href="https://www.churchbanners.com/handheld-signs/" class="subcat-children-link">Handheld Signs</a>
+                                    <a href="https://www.churchbanners.com/custom-a-frame-banner-display-8ft/" class="subcat-children-link">A-Frame Banner</a>
+                                    <a href="https://www.churchbanners.com/church-banners/custom-banners/billboard-building-vinyl/" class="subcat-children-link">Large Building
+                                        Banners</a>
+                                    <a href="https://www.churchbanners.com/flag-banners/" class="subcat-children-link">Flag Banners</a>
+                                    <a href="https://www.churchbanners.com/teardrop-flags/" class="subcat-children-link">Teardrop Flags</a>
+                                    <a href="https://www.churchbanners.com/yard-sign/" class="subcat-children-link">Yard Signs</a>
+                                    <a href="https://www.churchbanners.com/church-banners/church-signs/aluminum-church-sign/" class="subcat-children-link">Aluminum Signs</a>
+                                </li>
+                                <li>
+                                    <img data-src="https://cdn11.bigcommerce.com/s-cnam78/images/stencil/original/image-manager/image-6.jpg?t=1722500688"
+                                        src="{{cdn 'img/loading.svg'}}" alt="church banners navigation image block"
+                                        class="lazyload navcat-image">
+                                </li>
+                            </ul>
+                        </div>
+                        {{/if}}
+                        {{#if (lowercase (dashcase name)) '==' 'customize'}}
+                        <div class="container-ul-sub parent-sub-category-id-{{id}}">
+                            <ul class="parent-sub-category">
+                                <li>
+                                    <a href="/custom-banners/" class="parent-subcat-link">Custom Printing</a>
+                                    <a href="/custom-banners-cat/" class="subcat-children-link">Custom banner</a>
+                                    <a href="/stands-displays-cat/" class="subcat-children-link">Custom Display</a>
+                                    <a href="/church-signs/" class="subcat-children-link">Custom Signs</a>
+                                    <a href="/church-banners/handheld-signs/custom-circle-handheld-sign/"
+                                        class="subcat-children-link">Circle Handheld</a>
+                                    <a href="/church-banners/handheld-signs/custom-handheld-sign/"
+                                        class="subcat-children-link">Square Handheld</a>
+                                    <a href="/church-banners/custom-banners/billboard-building-vinyl/"
+                                        class="subcat-children-link">Billboards</a>
+                                    <a href="/print-my-artwork/" class="subcat-children-link">Your Artwork</a>
+                                </li>
+                                <li>
+                                    <a href="/custom-banner-options/" class="parent-subcat-link">Need Design Help?</a>
+                                    <a href="/free-proof-request/" class="subcat-children-link">Free Proof Request</a>
+                                    <a href="/request-a-free-quote-or-consultation/" class="subcat-children-link">Custom
+                                        Quote</a>
+                                    <a href="/catalog/" class="subcat-children-link">Free Samples</a>
+                                    <a href="/banner-templates/" class="subcat-children-link">Design Templates</a>
+                                </li>
+                                <li>
+                                    <img data-src="https://cdn11.bigcommerce.com/s-cnam78/images/stencil/original/image-manager/image-7.jpg?t=1722500690"
+                                        src="{{cdn 'img/loading.svg'}}" alt="church banners navigation image block"
+                                        class="lazyload navcat-image">
+                                </li>
+                            </ul>
+                        </div>
+                        {{/if}}
+                        {{#if (lowercase (dashcase name)) '==' 'templates-videos-more'}}
+                        <div class="container-ul-sub parent-sub-category-id-{{id}}">
+                            <ul class="parent-sub-category">
+                                <li>
+                                    <a href="/videos/" class="subcat-children-link">Video Tutorials</a>
+                                    <a href="/banner-templates/" class="subcat-children-link">Templates</a>
+                                    <a href="https://firstimpressions.churchbanners.com/"
+                                        class="subcat-children-link">Our Blog</a>
+                                    <a href="/catalog/" class="subcat-children-link">Free Catalog</a>
+                                    <a href="/request-a-free-quote-or-consultation/"
+                                        class="subcat-children-link">Request a Quote</a>
+                                    <a href="/custom-designs/" class="subcat-children-link">FAQ</a>
+                                    <a href="/shipping-info/" class="subcat-children-link">Shipping & Delivery</a>
+                                    <a href="/free-proof/" class="subcat-children-link">Free Proof</a>
+
+                                </li>
+                                <li>
+                                    <img data-src="https://cdn11.bigcommerce.com/s-cnam78/images/stencil/original/image-manager/image-8.jpg?t=1722500691"
+                                        src="{{cdn 'img/loading.svg'}}" alt="church banners navigation image block"
+                                        class="lazyload navcat-image">
+                                </li>
+                            </ul>
+                        </div>
+                        {{/if}}
+                        {{/if}}
+                    </li>
+
+                    {{/inArray}}
+                    {{/each}}
+                </ul>
+            </div>
+        </div>
+        <div class="resources-container-desktop" >
+            <!--<a href="/pricing/">Pricing</a>-->
+            <a href="/about-us">About us</a>
+            <a href="/videos">Videos</a>      
+            <a href="/free-proof-request/">Free Proof</a> 
+            <a href="/catalog/">Free Catalog</a>
+            <a href="/shipping-info/">Shipping</a>            
+            <a href="/banner-templates/">Templates</a>
+            <!--<a href="/custom-banners/">Custom</a>-->
+            <a href="/blog">Blog</a>
+            <a href="/about-us-1/#gallery-zone">Gallery</a>
+            <a href="/request-a-free-quote-or-consultation/">Request Quote</a>
+            <a href="/custom-designs/">FAQ</a>
+
+        </div>
+
+    </div>
+    <div class="mobile-contact-container">
+        <div class="ccol ccol-a">
+            <a class="container-phone _20px-mulish" href="tel:888-453-0060">
+                <svg>
+                    <use xlink:href="#icon-call"></use>
+                </svg>
+                888.453.0060
+            </a>
+            <a href="mailto:support@churchbanners.com" class="mail-href">
+                <svg>
+                    <use xlink:href="#icon-chat"></use>
+                </svg>
+                support@churchbanners.com
+            </a>
+        </div>
+        <div class="ccol ccol-btn">
+            <a href="/catalog/" class="r-catalog mobile-header-btn">Request
+                Catalog</a>
+            <a href="/contact-us" class="r-contact-us mobile-header-btn">Contact Us</a>
+        </div>
+    </div>
+    <div class="container-clone-footer">
+        <div class="container-footer-clone-image">
+            <a href="{{urls.home}}" class="header-logo__link" data-header-logo-link>
+                {{#if settings.store_logo.image}}
+                {{#if theme_settings.logo_size '===' 'original'}}
+                <img class="header-logo-image-unknown-size" src="{{getImage settings.store_logo.image 'logo_size'}}"
+                    alt="{{settings.store_logo.title}}" title="{{settings.store_logo.title}}">
+                {{else}}
+                <div class="header-logo-image-container">
+                    <img class="header-logo-image" src="{{getImage settings.store_logo.image '900w'}}"
+                        srcset="{{getImageSrcset1x2x settings.store_logo.image '900w'}}"
+                        alt="{{settings.store_logo.title}}" title="{{settings.store_logo.title}}">
+                </div>
+                {{/if}}
+                {{else}}
+                <span class="header-logo-text">{{settings.store_logo.title}}</span>
+                {{/if}}
+            </a>
+        </div>
+        <div class="h-container-footer">
+            <a href="#" class="h-call"><svg>
+                    <use xlink:href="#icon-call-fontawesome"></use>
+                </svg> (888) 453-0060</a>
+            <a href="#" class="h-call"><svg>
+                    <use xlink:href="#icon-envelope"></use>
+                </svg> support@churchbanners.com</a>
+        </div>
+        <div class="hh">
+            <span class="title-hh">Office Hours</span>
+            <span class="hh-cc">Monday - Thursday | 9:00am - 5:00pm CST
+                Fridy | 9:00am - 3:00pm CST Saturdays and Sundays | Close
+            </span>
+        </div>
+        <div class="hh-categ half">
+            <span class="title-hh">Categories</span>
+            {{#each categories}}
+            {{#inArray (split
+            'church-banners|feather-flags|backdrop-banners|light-pole-banners|stands-displays|kids-ministry|outdoor-signs|customize|templates-videos-more'
+            '|') (lowercase (dashcase name))}}
+            <a href="{{url}}" class="hh-s-categ">{{name}}</a>
+            {{/inArray}}
+            {{/each}}
+        </div>
+        <div class="hh-categ half ourcompany">
+            <span class="title-hh">Our Company</span>
+            <a href="/about-us" class="category-footer mulish">About Us</a>
+            <a href="/contact-us" class="category-footer mulish">Contact Us</a>
+            <a href="/free-catalog" class="category-footer mulish">Free Catalog</a>
+            <a href="#" class="category-footer mulish">Free Proof</a>
+            <a href="/request-a-free-quote-or-consultation/" class="category-footer mulish">Request Quote</a>
+            <a href="/custom-banners" class="category-footer mulish">Customize</a>
+            <a href="/custom-designs" class="category-footer mulish">FAQ</a>
+            <a href="/blog" class="category-footer mulish">Blog</a>
+        </div>
+        <div class="hh-categ half">
+            <span class="title-hh">Resources</span>
+            <a href="/login.php" class="category-footer mulish">My Account</a>
+            <a href="/banner-templates" class="category-footer mulish">Templates</a>
+            <a href="/shipping-info" class="category-footer mulish">Shipping</a>
+            <a href="/videos" class="category-footer mulish">Videos</a>
+            <a href="/about-us/#gallery-zone" class="category-footer mulish">Gallery</a>
+
+        </div>
+        <div class="hh-categ half svg-header">
+            <span class="title-hh">Social Media</span>
+            <a href="https://www.facebook.com/churchbannersdfw"><svg>
+                    <use xlink:href="#icon-facebook-custom"></use>
+                </svg></a>
+            <a href="https://www.youtube.com/channel/UCDlcxw4pmgfug4BXrSuOKWQ"><svg>
+                    <use xlink:href="#icon-youtube-custom"></use>
+                </svg></a>
+        </div>
+    </div>
+    <div class="container-cvf">
+        <span class="copy-right-footer">&copy; {{moment format="YYYY"}} {{settings.store_name}} | All Rights
+            Reserved.</span>
+    </div>
+</div>

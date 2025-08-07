@@ -1,0 +1,68 @@
+
+
+{{#partial "hero"}}
+<!-- {{> components/common/breadcrumbs breadcrumbs=breadcrumbs active_url=blog.url}} -->
+<div class><img src="{{cdn 'assets/img/images/contact.jpg'}}" /></div>
+{{/partial}}
+
+{{#partial "page"}}
+
+
+<main class="page page--contact container">
+
+
+{{#if page.sub_pages}}
+    <nav class="navBar">
+        <ul class="navBar-section">
+            {{#each page.sub_pages}}
+                <li class="navBar-item"><a class="navBar-action" href="{{url}}">{{title}}</a></li>
+            {{/each}}
+        </ul>
+    </nav>
+{{/if}}
+
+<div class="page-content row ">
+   
+   
+   
+        
+    <div class="col-sm-12 col-md-12 box-slider-title header-title" >
+        
+        {{{region name="catlog_content_new"}}}
+        
+    
+    </div>
+    
+    
+        
+        <div class="col-sm-6 col-md-6 freeCatalogPage freeCatalogPageText" >
+            {{{page.content}}}
+            
+         {{{region name="catlog_content"}}}
+
+         <!--<div class="catalogLeft">-->
+         <!--   <p>{{{region name="catlog_content1"}}}</p>-->
+         <!--   {{{region name="catlog_img1"}}}-->
+         <!--   <div class="catalogBtns">-->
+         <!--      {{{region name="catlog_button1"}}}-->
+         <!--      {{{region name="catlog_button2"}}}-->
+         <!--   </div>-->
+         <!--</div>-->
+                
+        </div>
+        <div class="col-sm-6 col-md-6 freeCatalog">
+            {{{region name="catlog_html"}}}
+           
+           
+        </div>
+    
+    
+</div>
+
+</main>
+
+{{> components/common/footer-upper}}
+
+{{/partial}}
+
+{{> layout/base}}

@@ -1,0 +1,64 @@
+---
+blog:
+    posts:
+        limit: 9
+        pages: 3
+        summary: 200
+---
+{{#partial "head"}}
+    {{#if pagination.blog.previous}}
+        <link rel="prev" href="{{pagination.blog.previous}}">
+    {{/if}}
+    {{#if pagination.blog.next}}
+        <link rel="next" href="{{pagination.blog.next}}">
+    {{/if}}
+{{/partial}}
+
+{{#partial "page"}}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<main class="page main-blog-page-container">
+    {{!--
+    {{#unless theme_settings.hide_blog_page_heading }}
+        <h1 class="page-heading">{{ blog.name }}</h1>
+    {{/unless}}
+    --}}
+    {{!--
+    <div class="main-banner-blog">
+        <img src="{{cdn 'img/loading.svg'}}" data-src="https://cdn11.bigcommerce.com/s-cnam78/product_images/uploaded_images/blog-page-image-scaled.jpg" alt="banner blog" class="lazyload">
+    </div>
+    --}}
+    <div class="list-view">
+        <div class="btn btn-gridview">View as: </div>
+        <button type="button" id="grid-view" class="btn btn-default grid hidden-md-down _active" title=""><i class="fa fa-th-large" aria-hidden="true"></i></button>
+        <button type="button" id="list-view" class="btn btn-default list" title=""><i class="fa fa-bars"></i></button>
+    </div>
+    <div class="blog-container">
+        {{#each blog.posts}}
+            {{> components/blog/post post=this theme_settings=../theme_settings}}
+        {{/each}}
+    </div>
+    {{> components/common/paginator pagination.blog}}
+</main>
+<script>
+    //grid or list view button
+    document.addEventListener('DOMContentLoaded',function(){
+        const gridButton = document.getElementById('grid-view');
+        const listButton = document.getElementById('list-view');
+        const blogcontainer = document.querySelector('.blog-container');
+
+    gridButton.addEventListener('click', () => {
+        toggleActiveClass(gridButton, listButton);
+        blogcontainer.classList.remove('_list-view');
+    });
+    listButton.addEventListener('click', () => {
+        toggleActiveClass(listButton, gridButton);
+        blogcontainer.classList.add('_list-view'); 
+    });
+    function toggleActiveClass(activeButton, inactiveButton) {
+        activeButton.classList.add('_active');
+        inactiveButton.classList.remove('_active');
+    }
+    });
+</script>
+{{/partial}}
+{{> layout/base}}

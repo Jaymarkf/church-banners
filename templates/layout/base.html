@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html class="no-js {{lowercase (dashcase template_file)}} {{lowercase (dashcase settings.request.absolute_path)}} {{#if settings.request.absolute_path '==' '/'}}homepage{{/if}}" lang="{{ locale_name }}">
+    <head>
+        <title>{{ head.title }}</title>
+        {{{ resourceHints }}}
+        {{{ head.meta_tags }}}
+        
+        {{{ head.config }}}
+        {{#block "head"}} {{/block}}
+
+        <meta name="google-site-verification" content="rRq3kRvutHzxwA4AdedKvshzAeg3I3SuqT32YEyUFx8" />
+        <link href="{{ head.favicon }}" rel="shortcut icon">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+        
+        <script>
+            {{!-- Change document class from no-js to js so we can detect this in css --}}
+            document.documentElement.className = document.documentElement.className.replace('no-js', 'js');
+        </script>
+
+        {{> components/common/polyfill-script }}
+        <script>window.consentManagerTranslations = `{{{langJson 'consent_manager'}}}`;</script>
+
+        {{!-- Load Lazysizes script ASAP so images will appear --}}
+        <script>
+            {{!-- Only load visible elements until the onload event fires, after which preload nearby elements. --}}
+            window.lazySizesConfig = window.lazySizesConfig || {};
+            window.lazySizesConfig.loadMode = 1;
+        </script>
+        <script async src="{{cdn 'assets/dist/theme-bundle.head_async.js' resourceHint='preload' as='script'}}"></script>
+        
+        {{getFontsCollection font-display='block'}}
+        
+        <script async src="{{cdn 'assets/dist/theme-bundle.font.js' resourceHint='preload' as='script'}}"></script>
+        <script type="text/javascript" src="https://a.omappapi.com/app/js/api.min.js" data-account="130314" data-user="118210" async></script>
+        {{{stylesheet '/assets/css/theme.css'}}}
+         {{#if template_file '==' 'pages/category'}}
+        {{{stylesheet '/assets/css/category.css'}}}
+        {{/if}}
+
+        {{{head.scripts}}}
+
+        {{~inject 'zoomSize' theme_settings.zoom_size}}
+        {{~inject 'productSize' theme_settings.product_size}}
+        {{~inject 'genericError' (lang 'common.generic_error')}}
+        {{~inject 'urls' urls}}
+        {{~inject 'secureBaseUrl' settings.secure_base_url}}
+        {{~inject 'cartId' cart_id}}
+        {{~inject 'template' template}}
+        {{~inject 'validationDictionaryJSON' (langJson 'validation_messages')}}
+        {{~inject 'validationFallbackDictionaryJSON' (langJson 'validation_fallback_messages')}}
+        {{~inject 'validationDefaultDictionaryJSON' (langJson 'validation_default_messages')}}
+        {{~inject 'carouselArrowAndDotAriaLabel' (lang 'carousel.arrow_and_dot_aria_label')}}
+        {{~inject 'carouselActiveDotAriaLabel' (lang 'carousel.active_dot_aria_label')}}
+        {{~inject 'carouselContentAnnounceMessage' (lang 'carousel.content_announce_message')}}
+        
+        <!--For social Media Image size -->
+         <meta property="og:type" content="video.other">
+         <meta property="og:image:width" content="250">
+         <meta property="og:image:height" content="100">
+         <meta property="og:image:alt" content="Church Banners | ChurchBanners">
+    </head>
+    <body>
+        <svg data-src="{{cdn 'img/icon-sprite.svg'}}" class="icons-svg-sprite"></svg>
+
+        {{> components/common/header }}
+        {{> components/common/body }}
+        {{> components/common/footer }}
+        {{> aoc-custom-section/footer/footer-script }}
+
+        <script>window.__webpack_public_path__ = "{{cdn 'assets/dist/'}}";</script>
+        <script>
+            {{!-- Exported in app.js --}}
+            function onThemeBundleMain() {
+                window.stencilBootstrap("{{page_type}}", {{jsContext}}).load();
+
+                function browserSupportsFormData() {
+                    return typeof FormData !== 'undefined' 
+                        && !!FormData.prototype.keys;
+                }
+                function loadFormDataPolyfillScript(src) {
+                    var formDataPolyfillScript = document.createElement('script');
+                    formDataPolyfillScript.src = src;
+                    formDataPolyfillScript.onerror = function () {
+                        console.error('Failed to load formData polyfill script ' + src);
+                    };
+                    document.body.appendChild(formDataPolyfillScript);
+                }
+
+                if (!browserSupportsFormData()) {
+                    loadFormDataPolyfillScript('{{cdn 'assets/dist/theme-bundle.polyfill_form_data.js'}}');
+                }
+            }
+        </script>
+        <script>
+        var btn = document.querySelectorAll('.desc-title');
+
+        btn.forEach(function(e){
+            e.addEventListener('click',function(){
+                this.nextElementSibling.classList.toggle('d-flex');
+                if(this.nextElementSibling.classList.contains("d-flex")){
+                    this.querySelector('.c').textContent = "-";
+                }else{
+                    this.querySelector('.c').textContent = "+";
+                }
+            });
+        });
+        
+        var c = document.querySelectorAll('.c');
+        
+        c.forEach(function(x){
+            x.addEventListener('click',function(){
+            this.parentElement.nextElementSibling.classList.toggle('d-flex');
+                if(this.nextElementSibling.classList.contains("d-flex")){
+                    this.querySelector('.c').textContent = "-";
+                }else{
+                    this.querySelector('.c').textContent = "+";
+                }
+            });
+        });
+
+        </script>
+        <script async defer src="{{cdn 'assets/dist/theme-bundle.main.js' resourceHint='preload' as='script'}}" onload="onThemeBundleMain()"></script>
+
+        {{{footer.scripts}}}
+
+<!-- SPLIDE JS FOR PRODUCT PAGE ONLY IN REVIEWS SECTION-->
+<!-- ONLY WORKS WHEN REVIEWS ARE MORE THAN 3-->
+{{#gt product.num_reviews 3}}  
+<script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css" rel="stylesheet"> 
+{{/gt}}
+<!-- END OF MORE THAN 3-->  
+<!-- END OF SPLIDE-->
+<script>
+ document.addEventListener("DOMContentLoaded", function () {
+    var x = document.querySelector('.account-php #main-content .container');
+
+    if (x) {
+        var btn = document.createElement("a");
+        btn.href = "/login.php?action=logout"; // Ensure this URL is correct
+        btn.textContent = "Logout"; // Button text
+        
+        // Correct way to add multiple classes
+        btn.classList.add("logout-button", "button-yellow", "contrast-yellow", "p-mulish", "bold");
+
+        x.appendChild(btn); // Append to the selected container
+    }
+});
+
+</script>
+<style>
+    .logout-button{
+        display:block;
+        color:white;
+        margin-bottom:40px;
+        margin-left:auto;
+        margin-right:auto;
+    }
+</style>
+<script type="application/ld+json" nonce="">
+{
+    "@context": "https://schema.org",
+    "@graph": [
+        {
+            "isPartOf": {
+                "@id": "https://churchbanners.com/#WebPage"
+            },
+            "publisher": {
+                "@id": "https://churchbanners.com/#Business"
+            },
+            "@id": "https://churchbanners.com/#WebPage",
+            "url": "https://churchbanners.com/",
+            "name": "Church Banners",
+            "@type": "WebPage"
+        },
+        {
+            "@id": "https://churchbanners.com/#WebSite",
+            "url": "https://churchbanners.com/",
+            "name": "Church Banners, Custom Banners, Backdrops & more | ChurchBanners.com",
+            "alternateName": [
+                "Church Banners",
+                "ChurchBanners"
+            ],
+            "publisher": {
+                "@id": "https://churchbanners.com/#Business"
+            },
+            "@type": "WebSite"
+        },
+        {
+            "url": "https://churchbanners.com/",
+            "name": "Church Banners",
+            "@type": [
+                "OnlineStore",
+                "LocalBusiness"
+            ],
+            "alternateName": [
+                "Church Banners",
+                "ChurchBanners"
+            ],
+            "legalName": "Church Banners",
+            "address": {
+                "streetAddress": "208 E Irving Blvd",
+                "addressLocality": "Irving",
+                "addressRegion": "TX",
+                "addressCountry": "US",
+                "postalCode": "75060",
+                "@type": "PostalAddress"
+            },
+            "priceRange": "$",
+            "telephone": "888-453-0060",
+            "email": "support@churchbanners.com",
+            "contactPoint": {
+                "telephone": "888-453-0060",
+                "email": "support@churchbanners.com",
+                "@type": "ContactPoint"
+            },
+            "logo": "https://www.churchbanners.com/images/stencil/250x100/full-lockup_1723083480__39545.original.png",
+            "image": "https://www.churchbanners.com/images/stencil/250x100/full-lockup_1723083480__39545.original.png",
+            "description": "We are your source for custom church banners, outdoor banners, religious banners, flags, backdrops & displays. We print banners on both fabric and vinyl.",
+            "numberOfEmployees": {
+                "@type": "QuantitativeValue",
+                "minValue": 50,
+                "maxValue": 70
+            },
+ 
+            "iso6523Code": [],
+            "sameAs": [
+                "https://www.facebook.com/churchbannersdfw/",
+                "https://instagram.com/church_banners"
+            ],
+            "hasMerchantReturnPolicy": [
+                {
+                    "@id": "/#MerchantReturnPolicy1",
+                    "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+                    "applicableCountry": [
+                        "US"
+                    ],
+                    "returnPolicyCountry": [
+                        "US"
+                    ],
+                    "merchantReturnDays": 30,
+                    "returnMethod": [
+                        "https://schema.org/ReturnByMail"
+                    ],
+                    "refundType": [
+                        "https://schema.org/StoreCreditRefund"
+                    ],
+                    "itemCondition": [
+                        "https://schema.org/NewCondition"
+                    ],
+                    "customerRemorseReturnFees": "https://schema.org/ReturnFeesCustomerResponsibility",
+                    "customerRemorseReturnLabelSource": "https://schema.org/ReturnLabelDownloadAndPrint",
+                    "itemDefectReturnFees": "https://schema.org/FreeReturn",
+                    "itemDefectReturnLabelSource": "https://schema.org/ReturnLabelDownloadAndPrint",
+                    "returnFees": "https://schema.org/ReturnShippingFees",
+                    "returnLabelSource": "https://schema.org/ReturnLabelDownloadAndPrint",
+                    "@type": "MerchantReturnPolicy"
+                }
+            ],
+            "@id": "https://churchbanners.com/#Business"
+        }
+    ]
+}
+</script>
+<script>
+    function alignResourcesContainer() {
+        const linkParent = document.querySelector('.link-parent');
+        const resourcesContainer = document.querySelector('.resources-container-desktop');
+    
+        if (!linkParent || !resourcesContainer) return;
+    
+        if (window.innerWidth > 900) {
+            // Get the left offset of .link-parent relative to the viewport
+            const linkParentRect = linkParent.getBoundingClientRect();
+    
+            // Apply the same left offset to .resources-container-desktop
+            resourcesContainer.style.position = 'absolute';
+            resourcesContainer.style.left = `${linkParentRect.left}px`;
+        } else {
+            // Reset styles when screen width is 900px or below
+            resourcesContainer.style.position = '';
+            resourcesContainer.style.left = '';
+        }
+    }
+    
+    // Run function on page load
+    window.addEventListener('load', alignResourcesContainer);
+    
+    // Run function on window resize (but debounce to improve performance)
+    let resizeTimer;
+    window.addEventListener('resize', () => {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(alignResourcesContainer, 200);
+    });
+</script>
+<script async defer src="https://tools.luckyorange.com/core/lo.js?site-id=ef7d1d3e"></script>
+    </body> 
+    
+</html>  

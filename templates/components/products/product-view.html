@@ -1,0 +1,624 @@
+{{inject 'outOfStockDefaultMessage' (lang 'products.out_of_stock_default_message')}}
+
+<div class="productView"
+    data-event-type="product"
+    data-entity-id="{{product.id}}"
+    data-name="{{product.title}}"
+    data-product-category="
+    {{#each product.category}}
+        {{#if @last}}{{this}}{{else}}{{this}}, {{/if}}
+    {{/each}}"
+    data-product-brand="{{product.brand.name}}"
+    data-product-price="
+    {{#or customer (unless settings.hide_price_from_guests)}}
+        {{#if product.price.with_tax}}
+            {{product.price.with_tax.value}}
+        {{else}}
+            {{product.price.without_tax.value}}
+        {{/if}}
+    {{else}}
+        {{lang 'common.login_for_pricing'}}
+    {{/or}}"
+    data-product-variant="single-product-option">
+
+    {{#each product.reviews.messages}}
+        {{#if error}}
+            {{> components/common/alert/alert-error error}}
+        {{/if}}
+        {{#if success}}
+            {{> components/common/alert/alert-success success}}
+        {{/if}}
+    {{/each}}
+
+    <section class="productView-images" data-image-gallery>
+        {{!--
+            Note that these image sizes are coupled to image sizes used in /assets/js/theme/common/product-details.js
+            for variant/rule image replacement
+        --}}
+        {{#if product.images.length '>' 1 }}
+        {{> components/carousel-content-announcement}}
+        {{/if}}
+        <ul class="productView-thumbnails"{{#gt product.images.length 4}} data-slick='{
+            "infinite": false,
+            "mobileFirst": false,
+            "dots": false,
+            "slidesToShow": 4,
+            "slidesToScroll": 4,
+            "vertical": true,
+            "responsive": [
+                {
+                    "breakpoint": 900,
+                    "settings": {
+                        "vertical": false,
+                        "slidesToShow": 3,
+                        "slidesToScroll": 3
+                    }
+                },
+                {
+                    "breakpoint": 550,
+                    "settings": {
+                        "vertical": false,
+                        "slidesToShow": 2,
+                        "slidesToScroll": 2
+                    }
+                }
+            ]
+
+        }'{{/gt}}>
+        {{#each product.images}}
+            <li class="productView-thumbnail">
+                <a
+                    class="productView-thumbnail-link"
+                    href="{{getImageSrcset this (cdn ../theme_settings.default_image_product) 1x=../theme_settings.zoom_size}}"
+                    data-image-gallery-item
+                    data-image-gallery-new-image-url="{{getImageSrcset this (cdn ../theme_settings.default_image_product) 1x=../theme_settings.product_size}}"
+                    data-image-gallery-new-image-srcset="{{getImageSrcset this use_default_sizes=true}}"
+                    data-image-gallery-zoom-image-url="{{getImageSrcset this (cdn ../theme_settings.default_image_product) 1x=../theme_settings.zoom_size}}"
+                >
+                {{> components/common/responsive-img
+                    image=this
+                    fallback_size=../theme_settings.productview_thumb_size
+                    lazyload=../theme_settings.lazyload_mode
+                }}
+                </a>
+            </li>
+        {{/each}}
+    </ul>
+        <figure class="productView-image"
+                data-image-gallery-main
+                {{#if product.main_image}}
+                data-zoom-image="{{getImageSrcset product.main_image (cdn theme_settings.default_image_product) 1x=theme_settings.zoom_size }}"
+                {{/if}}
+                >
+            <div class="productView-img-container">
+                {{!-- Remove the surrounding a-element if there is no main image. --}}
+                {{#if product.main_image}}
+                    <a href="{{getImageSrcset product.main_image (cdn theme_settings.default_image_product) 1x=theme_settings.zoom_size}}"
+                        target="_blank">
+                {{/if}}
+                {{> components/common/responsive-img
+                    image=product.main_image
+                    class="productView-image--default"
+                    fallback_size=theme_settings.product_size
+                    lazyload=theme_settings.lazyload_mode
+                    default_image=theme_settings.default_image_product
+                    otherAttributes="data-main-image"
+                }}
+                {{!-- Remove the surrounding a-element if there is no main image. --}}
+                {{#if product.main_image}}
+                    </a>
+                {{/if}}
+            </div>
+        </figure>
+    </section>
+
+    <section class="productView-details product-data">
+        <div class="productView-product">
+            <h1 class="productView-title">{{product.title}}</h1>
+            {{#if product.brand}}
+                <h2 class="productView-brand">
+                    <a href="{{product.brand.url}}"><span>{{product.brand.name}}</span></a>
+                </h2>
+            {{/if}}
+            <div class="productView-rating">
+                {{#if settings.show_product_rating}}
+                    {{> components/products/ratings rating=product.rating}}
+                    {{#if product.num_reviews '>' 0}}
+                        <a href="#reviews-section">
+                            {{lang 'products.reviews.link_to_review' total=product.num_reviews}}
+                        </a>
+                    {{else}}
+                        <span>{{lang 'products.reviews.link_to_review' total=product.num_reviews}}</span>
+                    {{/if}}
+                {{/if}}
+                {{#if settings.show_product_reviews}}
+                    <a href="{{product.url}}{{#if is_ajax}}#write_review{{/if}}"
+                       class="productView-reviewLink productView-reviewLink--new"
+                       {{#unless is_ajax}}data-reveal-id="modal-review-form"{{/unless}}
+                       role="button"
+                    >
+                       {{lang 'products.reviews.new'}}
+                    </a>
+                    {{#unless is_ajax}}
+                        {{> components/products/modals/writeReview}}
+                    {{/unless}}
+                {{/if}}
+            </div>
+            <div class="container-custom-icon">
+                <div class="col-icon"></div>
+                <div class="col-icon"></div>
+                <div class="col-icon"></div>
+                <div class="col-icon"></div>
+            </div>
+            {{#if product.call_for_price}}
+                <p class="productView-price">
+                    <span>{{product.call_for_price}}</span>
+                </p>
+            {{/if}}
+            <div class="productView-price">
+                {{#or customer (unless settings.hide_price_from_guests)}}
+                    {{> components/products/price price=product.price}}
+                {{else}}
+                    {{> components/common/login-for-pricing}}
+                {{/or}}
+            </div>
+            {{{region name="product_below_price"}}}
+
+            {{product.detail_messages}}
+            {{!--
+            <dl class="productView-info">
+                <dt class="productView-info-name sku-label"{{#unless product.sku}} style="display: none;"{{/unless}}>{{lang 'products.sku'}}</dt>
+                <dd class="productView-info-value" data-product-sku>{{product.sku}}</dd>
+                <dt class="productView-info-name upc-label"{{#unless product.upc}} style="display: none;"{{/unless}}>{{lang 'products.upc'}}</dt>
+                <dd class="productView-info-value" data-product-upc>{{product.upc}}</dd>
+                {{#if product.condition}}
+                    <dt class="productView-info-name">{{lang 'products.condition'}}</dt>
+                    <dd class="productView-info-value">{{product.condition}}</dd>
+                {{/if}}
+                {{#if product.availability}}
+                    <dt class="productView-info-name">{{lang 'products.availability'}}</dt>
+                    <dd class="productView-info-value">{{product.availability}}</dd>
+                {{/if}}
+                {{#all product.weight theme_settings.show_product_weight}}
+                    <dt class="productView-info-name">{{lang 'products.weight'}}</dt>
+                    <dd class="productView-info-value" data-product-weight>{{product.weight}}</dd>
+                {{/all}}
+                {{#all product.width product.height product.depth theme_settings.show_product_dimensions}}
+                    <dt class="productView-info-name">{{lang 'products.width'}}</dt>
+                    <dd class="productView-info-value" data-product-width>
+                        {{product.width}}
+                        {{#if settings.measurements.length '==' 'Centimeters'}}
+                        ({{lang 'products.measurement.metric'}})
+                        {{else}}
+                        ({{lang 'products.measurement.imperial'}})
+                        {{/if}}
+                    </dd>
+                    <dt class="productView-info-name">{{lang 'products.height'}}</dt>
+                    <dd class="productView-info-value" data-product-height>
+                        {{product.height}}
+                        {{#if settings.measurements.length '==' 'Centimeters'}}
+                        ({{lang 'products.measurement.metric'}})
+                        {{else}}
+                        ({{lang 'products.measurement.imperial'}})
+                        {{/if}}
+                    </dd>
+                    <dt class="productView-info-name">{{lang 'products.depth'}}</dt>
+                    <dd class="productView-info-value" data-product-depth>
+                        {{product.depth}}
+                        {{#if settings.measurements.length '==' 'Centimeters'}}
+                        ({{lang 'products.measurement.metric'}})
+                        {{else}}
+                        ({{lang 'products.measurement.imperial'}})
+                        {{/if}}
+                    </dd>
+                {{/all}}
+                {{#if product.min_purchase_quantity}}
+                    <dt class="productView-info-name">{{lang 'products.min_purchase_quantity'}}</dt>
+                    <dd class="productView-info-value">{{lang 'products.purchase_units' quantity=product.min_purchase_quantity}}</dd>
+                {{/if}}
+                {{#if product.max_purchase_quantity}}
+                    <dt class="productView-info-name">{{lang 'products.max_purchase_quantity'}}</dt>
+                    <dd class="productView-info-value">{{lang 'products.purchase_units' quantity=product.max_purchase_quantity}}</dd>
+                {{/if}}
+                {{#if product.gift_wrapping_available}}
+                    <dt class="productView-info-name">{{lang 'products.gift_wrapping'}}</dt>
+                    <dd class="productView-info-value">{{lang 'products.gift_wrapping_available'}}</dd>
+                {{/if}}
+        
+                {{#if product.shipping}}
+                    {{#if product.shipping.calculated}}
+                        <dt class="productView-info-name">{{lang 'products.shipping'}}</dt>
+                        <dd class="productView-info-value">{{lang 'products.shipping_calculated'}}</dd>
+                    {{else}}
+                        {{#if product.shipping.price.value '===' 0}}
+                            <dt class="productView-info-name">{{lang 'products.shipping'}}</dt>
+                            <dd class="productView-info-value">{{lang 'products.shipping_free'}}</dd>
+                        {{else}}
+                            <dt class="productView-info-name">{{lang 'products.shipping'}}</dt>
+                            <dd class="productView-info-value">{{lang 'products.shipping_fixed' amount=product.shipping.price.formatted}}</dd>
+                        {{/if}}
+                    {{/if}}
+                {{/if}}
+              
+                {{#if settings.bulk_discount_enabled}}
+                    <div class="productView-info-bulkPricing">
+                        {{> components/products/bulk-discount-rates bulk_discount_rates=product.bulk_discount_rates}}
+                    </div>
+                {{/if}}
+             
+                {{#if theme_settings.show_custom_fields_tabs '!==' true}}
+                    {{> components/products/custom-fields }}
+                {{/if}}
+              
+            </dl>
+            --}}
+        </div>
+    </section>
+   
+    <section class="productView-details product-options">
+        <div class="container-icons">
+            <div class="col-ic">
+                 <svg><use xlink:href="#icon-pen-tools"></use></svg>
+                 <span>Custom Designs</span>
+            </div>
+            <div class="col-ic">
+                 <svg><use xlink:href="#icon-ribbons"></use></svg>
+                 <span>Eye Catching</span>
+            </div>
+            <div class="col-ic">
+                 <svg><use xlink:href="#icon-reliability"></use></svg>
+                 <span>Highly Quality</span>
+            </div>
+            <div class="col-ic">
+                 <svg><use xlink:href="#icon-paper-clip"></use></svg>
+                 <span>Durable</span>
+            </div>
+         </div>
+        <div class="productView-options">
+            {{#if product.release_date }}
+                <p>{{product.release_date}}</p>
+            {{/if}}
+            <form class="form" method="post" action="{{product.cart_url}}" enctype="multipart/form-data"
+                  data-cart-item-add>
+                <input type="hidden" name="action" value="add">
+                <input type="hidden" name="product_id" value="{{product.id}}"/>
+                {{#if product.cart_order_source}}
+                    <input type="hidden" name="cart_order_source" value="{{product.cart_order_source}}"/>
+                {{/if}}
+                <div data-product-option-change style="display:none;">
+                    {{inject 'showSwatchNames' theme_settings.show_product_swatch_names}}
+                    {{#each product.options}}
+                        {{{dynamicComponent 'components/products/options'}}}
+                    {{/each}}
+                </div>
+                <div class="form-field form-field--stock{{#unless product.stock_level}} u-hiddenVisually{{/unless}}">
+                    <label class="form-label form-label--alternate">
+                        {{lang 'products.current_stock'}}
+                        <span data-product-stock>{{product.stock_level}}</span>
+                    </label>
+                </div>
+                {{> components/products/add-to-cart with_wallet_buttons=true}}
+                {{#if product.out_of_stock}}
+                    {{#if product.out_of_stock_message}}
+                        {{> components/common/alert/alert-error product.out_of_stock_message}}
+                    {{else}}
+                        {{> components/common/alert/alert-error (lang 'products.sold_out')}}
+                    {{/if}}
+                {{/if}}
+            </form>
+            {{#if settings.show_wishlist}}
+                {{> components/common/wishlist-dropdown}}
+            {{/if}}
+        </div>
+      
+        {{> components/common/share url=product.url}}
+   
+    </section>
+
+</div>
+{{!--
+<article class="productView-description">
+    {{#if theme_settings.show_product_details_tabs}}
+        {{> components/products/description-tabs}}
+    {{else}}
+        {{> components/products/description}}
+    {{/if}}
+</article>
+--}}
+<article class="custom-productView-description">
+    <hr>
+    <div class="desk-con">
+        <span class="desc-title">Information <span class="c">+</span></span>
+        <div id="container-info" class="main-con">
+           
+        </div>
+    </div>
+    {{#if product.videos.list.length}}
+    <hr>
+    <div class="desk-con">
+        <span class="desc-title">Videos <span class="c">+</span></span>
+        <div id="container-info" class="main-con">
+            {{> components/products/videos product.videos}}
+        </div>
+    </div>
+    {{/if}}
+    <hr>
+    <div class="desk-con">
+        <span class="desc-title">Shipping and Handling <span class="c">+</span></span>
+        <div id="container-shipping" class="main-con">
+           <ul>
+                <li>We ship all our church banners using FedEx ground and FedEx Economy Intl' for those outside the USA.</li>
+                <li>Alaska & Hawaii do take longer to arrive than our closer 48 states.</li>
+                <li>We can expedite shipping for express delivery, but you must call in to check available options</li>
+                <li>Stock Orders in limited quantities ship with in 2 business days upon the clearing of payment.</li>
+                <li>Custom Orders vary depending on approval of artwork. Once artwork is approved and paid, the order will ship with the same time requirements as our stock banners.</li>
+                <li>Customers can choose other carriers for their packages, but they must call in to
+                    place their order and shipping preferences. There may be additional charges for the
+                    different carrier requirements</li>
+                <li>
+                    Most packages in the 48 states will arrive within 3-5 business days upon leaving our warehouse.
+                </li>
+                <li>
+                  Tracking for your package is sent once it has been processed and an email is sent to the one provided at check-out.
+                </li>
+                <li>
+                    EXAMPLE OF GROUND SHIPPING on all approved INDOOR custom banner orders  
+                </li>
+                <li>
+                    Approved Custom banners ordered online by 3pm CST Monday will ship
+Wednesday. Once shipped it will take 3-5 business days to arrive.(48 states,
+international shipping times vary)
+                </li>
+                <li>
+                    Custom banner orders will have proofs sent within I business day of the order
+placed. Once confirmation is approved on the custom proof, banner will ship within
+2 business days of approval. Once shipped it will take 3-5 business days to arrive.
+Please check your junk/spam folder incase you do not see a proof.
+                </li>
+                <li>
+                    Suggestion: give yourself 10days(normal season) (7days when we're all working
+fast for Christmas & Easter) to have stock banners arrive during normal business
+seasons (Advent, Christmas, & Easter we try hard even with the high volume to get
+the banners out fast for you in order to have on time for decorating your sanctuary)
+                </li>
+                <li>
+                    Do note that a custom church banner order can not print until payment and an email approval has been received. If our design team does not receive an approval, it will not go to print. These times are based on APPROVED file orders.
+                </li>
+           </ul>
+           <ul class="map">
+                <li>
+                    <img class="lazyload" src="{{cdn 'img/loading.svg'}}" data-src="https://cdn11.bigcommerce.com/s-cnam78/images/stencil/original/image-manager/image-10-2-.png?t=1722999586" alt="">
+                </li>
+           </ul>
+        </div>
+    </div>
+    <hr>
+    <div class="desk-con">
+        <span class="desc-title">Payment and Return Policies for Refund <span class="c">+</span></span>
+        <div id="container-payment" class="main-con">
+            <li>
+            Orders must be paid in full before printing and shipping can be completed.
+           </li>
+           <li>
+            CUSTOM BANNERS ARE NON REFUNDABLE.
+           </li>
+           <li>
+            Any defects or misprints on our behalf ChurchBanners.com will print and ship immediately
+new banners out to you on our behalf. We want to make sure you receive what your ministry
+ordered.
+           </li>
+           <li>
+            Stock indoor church banners (pole pocket finishings only in a 2'x6' or 3'x5' size only) are
+available with a full banner refund. Customers must call within 5 days of receiving their
+package to request an RA NUMBER. Shipping & Handling is not refundable. Once an RA is
+given the banners must arrive within two weeks in the same package they were originally
+shipped in or we will no longer be able to refund the stock banner purchase.
+           </li>
+           <li>
+            For non stock banners or banners with GROMMETS, we unfortunately can not take them back.
+If it is a misprint on our behalf we will gladly fix and reship out new banners immediately.
+           </li>
+           <li>
+            Stands and displays may encure a 25% restocking fee depending on the quantity and stand.
+For questions, please ask a representative before placing your order.
+           </li>
+           <li>
+            Shipping Expense on your invoice is non-refundable and shipping return items is paid for by the customer.
+           </li>
+        </div>
+    </div>
+    <hr>
+</article>
+
+{{#if product.num_reviews}}
+<article class="product-rev" id="reviews-section">
+<h2 id="product-review-title">Product Reviews</h2>
+    <div class="container-reviews splide" aria-labelledby="carousel-heading" {{#lt product.num_reviews 4}}style="padding-left:0"{{/lt}}>
+        <div class="col-reviews splide__track">
+            <div class="splide__list {{#lt product.num_reviews 4}}no_splide{{/lt}}">
+                {{#lt product.num_reviews 4}}
+                    {{#each product.reviews.list}}
+                        <div class="splide__slide" style="padding-left:0">
+                                <div class="star-container">
+                                    {{#for 1 rating}}
+                                    <svg><use xlink:href="#icon-star"></use></svg>
+                                    {{/for}}
+                                </div>
+                                <h4 class="review-headings">
+                                    {{{title}}}
+                                </h4>
+                                <p class="review-content">
+                                    {{text}}
+                                </p>
+                                <span class="review-name">
+                                    {{name}}
+                                </span>    
+                        </div>
+                    {{/each}}
+                {{/lt}}
+            </div>
+        </div>
+    </div>
+</article>
+{{/if}}
+{{> components/products/tabs}}
+{{> aoc-custom-section/productpage/faq}}
+ 
+<article class="blog-post-container">
+    <h2 class="h2-titles">Latest Blog Posts</h2>
+    <div class="container-blog-post">
+        {{#each (limit blog.recent_posts 2)}}
+        <div class="col-blog">
+            <div class="container-img-blog">
+                {{> components/common/responsive-img
+                    image=thumbnail
+                    fallback_size=theme_settings.blog_size
+                    lazyload=theme_settings.lazyload_mode
+                }}
+            </div>
+            <div class="blog-content">
+                <span class="title-blog">
+                    {{title}}
+                </span>
+                <small class="blog-date">
+                    {{date_published}}
+                </small>
+                <a href="{{url}}" class="read-more-blog">Read More</a>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+</article>
+
+
+<div id="previewModal" class="modal modal--large" data-reveal>
+    {{> components/common/modal/modal-close-btn }}
+    <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="modal-header-title"></div>
+    <div class="loadingOverlay"></div>
+</div>
+
+
+
+
+{{#if product.description}}
+{{inject 'productDescription' product.description}}
+<script>
+    document.addEventListener("DOMContentLoaded",function(){
+    var jsContext = JSON.parse({{jsContext}});
+    var f = jsContext.productDescription;
+    let t = f.split('Shipping and Handling...');
+    let info = t[0].trim();
+    document.querySelector('#container-info').innerHTML = info;
+        
+    //accordion click
+    var c = document.querySelectorAll('.c');
+    c.forEach(function(item){
+      item.addEventListener('click',function(){
+       var p = item.parentElement.nextElementSibling;
+       p.classList.toggle('d-flex');
+        // Toggle the text content of the <p> element
+        if (item.textContent === '+') {
+            item.textContent = '-';
+        } else {
+            item.textContent = '+';
+        }
+      });
+    });
+    {{#gt product.num_reviews 3}}
+    fetch('/graphql', {
+        method: 'POST',
+        credentials: 'same-origin',
+        headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer {{ settings.storefront_api.token }}' // use auto-generated token
+        },
+                body: JSON.stringify({
+                query: `query MyQuery {
+            site {
+                product(entityId: {{product.id}}) {
+                reviews {
+                    edges {
+                    node {
+                        author {
+                        name
+                        }
+                        rating
+                        text
+                        title
+                    }
+                    }
+                }
+                }
+            }
+            }`
+                })
+            })
+            .then(res => res.json())
+            .then(data => cm(data)) // will log JSON result to browser console
+            .catch(error => console.error(error));
+  function cm(d){    
+    var x =  d.data.site.product.reviews.edges;
+    x.forEach(function(e) {
+    var ratings = e.node.rating;
+    var title = e.node.title;
+    var content = e.node.text;
+    var author = e.node.author.name;   
+    var stars = ''; 
+    for (let i = 0; i < ratings; i++) {
+        stars += `<svg><use xlink:href="#icon-star"></use></svg>`; 
+    }
+
+    var html = ` <div class="splide__slide">
+                    <div class="star-container">
+                        ${stars}
+                    </div>
+                    <h4 class="review-headings">
+                        ${title}
+                    </h4>
+                    <p class="review-content">${content}</p>
+                    <span class="review-name">${author}</span>    
+                </div>
+            `;
+
+    document.querySelector('.splide__list').insertAdjacentHTML('beforeend', html);
+
+    });
+
+    var splide = new Splide( '.splide' ,{
+        perPage:3,
+        breakpoints:{
+            1024:{
+                perPage:2
+            },
+            550:{
+                perPage:1
+            }
+        }
+    });
+    setTimeout(function(){
+        splide.mount();
+    },2000);
+}
+    {{/gt}}
+
+    //frequently script
+        var f = document.querySelectorAll('.toggle-plus');
+        f.forEach(function(e){
+        e.addEventListener('click',function(){
+                e.parentElement.nextElementSibling.classList.toggle('d-block');
+                if (e.textContent === '+') {
+                    e.textContent = '-';
+                } else {
+                    e.textContent = '+';
+                }
+        });
+        });
+
+    //End of frequently script
+
+
+
+
+});    
+</script>
+{{/if}}

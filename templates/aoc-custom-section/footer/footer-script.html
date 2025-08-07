@@ -1,0 +1,293 @@
+<script defer async>
+/************************************************** FOR NAVIGATION MENU SCRIPT**/
+// document.addEventListener('DOMContentLoaded',function(){
+//   function handleResize() {
+//     if (window.innerWidth < 900) {
+//         //mobile
+//         var nav = document.querySelector('.cc');
+//         var mobile_nav = document.querySelector('.container-mobile-navigation');
+//         var arrow = nav.querySelector('.container-header-category svg');
+//         var containerHeaderCategory = document.querySelector('div.container-header-category');
+//         var toggleRotateSVG = containerHeaderCategory.querySelector('svg');
+//         var toggleRotateSVG1 = containerHeaderCategory.querySelector('svg use');
+//         var mainMobileNav = document.querySelector('span.main-mobile-nav');  
+//         var subcat = document.querySelectorAll('.col-nav-mobile .p-categ a span.nav-name i.arrow-button'); 
+
+//         //for parent category
+//         nav.addEventListener('click', function(event) {
+//             if (
+//                 event.target === nav || 
+//                 event.target === containerHeaderCategory || 
+//                 event.target === toggleRotateSVG || 
+//                 event.target === toggleRotateSVG1 || 
+//                 event.target === mainMobileNav
+//             ) {
+//                 arrow.classList.toggle('toggle-rotate');
+//                 mobile_nav.classList.toggle('toggle-show');
+    
+//             }
+//         });
+
+//         //for sub category
+//         subcat.forEach(function(elem){
+//             elem.addEventListener('click',function(e){
+//             e.preventDefault();
+//             var grandparentElement = this.parentNode.parentNode.nextElementSibling;
+//             grandparentElement.classList.toggle('toggle-show');
+//             elem.classList.toggle('toggle-rotate');
+//             });
+//         });       
+
+//     } else {
+//         //desktop
+//         var nav = document.querySelector('.cc');
+//         var desktop_nav = document.querySelector('.desktop-nav');
+//         var arrow = nav.querySelector('svg');
+//         var deskresource = document.querySelector('.resources-container-desktop');
+            
+//         nav.addEventListener('click',function(){
+//             desktop_nav.classList.toggle('toggle-show');
+//             arrow.classList.toggle('toggle-rotate');
+//             deskresource.classList.remove('flex');
+//         });
+//     }
+//   }
+//   // Initial call to handleResize
+//   handleResize();
+//   // Add event listener for window resize
+//   window.addEventListener('resize', handleResize);
+
+  //for toggle mobile menu
+  var x = document.querySelector('.hamburger-button');
+  var h = document.querySelector('body');
+  var header = document.querySelector('header.header');
+  var  custom_nav = document.querySelector('.container-custom-navigation');
+    x.addEventListener('click',function(){
+        var xd = document.querySelector('.aoc-custom-navigation');
+        xd.classList.toggle('show');
+        xd.classList.toggle('trigger-height');
+        h.classList.toggle('toggle-overflow-hidden');
+        header.classList.toggle('toggle-height-fixed');
+        custom_nav.classList.toggle('ovf');
+
+    });
+    var btn = document.querySelector('button.hamburger-button');
+    btn.addEventListener('click',function(){
+        this.querySelector('.ham-bar').classList.toggle('hide');
+        this.querySelector('.ham-x').classList.toggle('show');
+    });
+
+// });
+/**for resources navigation dropdown**/
+// document.addEventListener('DOMContentLoaded',function(){
+    //for resources
+var parent_links = document.querySelectorAll('.link-parent');
+var nav_category = document.querySelector('.desktop-nav.col-nav.category');
+
+parent_links.forEach(function(el){
+    var con = el.querySelector('.resources-container-desktop');
+    var svg = el.querySelector('svg');
+
+    el.addEventListener('click', function(){
+
+        // Close all other containers and reset all rotations
+        document.querySelectorAll('.resources-container-desktop').forEach((b) => {
+            if (b !== con) {
+                b.classList.remove('flex');
+            }
+        });
+
+        document.querySelectorAll('.link-parent svg').forEach(s => {
+            if (s !== svg) {
+                s.classList.remove('toggle-rotate');
+            }
+        });
+
+        // Toggle only the clicked one
+        con.classList.toggle('flex');
+        svg.classList.toggle('toggle-rotate');
+        nav_category.classList.remove('toggle-show');
+        // Prevent clicks inside resources container from bubbling up
+        document.querySelectorAll('.resources-container-desktop').forEach(container => {
+            container.addEventListener('click', function(event) {
+                event.stopPropagation();
+            });
+        });
+    });
+});
+
+
+
+    //desktop nav
+    document.querySelector('.desktop-nav-cc').addEventListener('click',function(){
+        var deskresource = document.querySelector('.desktop-nav');
+        var arrow = this.querySelector('svg');
+        arrow.classList.toggle('toggle-rotate');
+        deskresource.classList.toggle('toggle-show');
+        con.classList.remove('flex');
+
+    });
+
+     //mobile nav
+    const mvc = document.querySelector('.mobile-nav-cc');
+    const main_mobile_nav = mvc.querySelector('.main-mobile-nav');
+    const category_ = mvc.querySelector('.container-header-category');
+    // const category_arrow = document.querySelector('.container-header-category svg');  
+    const category_arrow = mvc.querySelector('.container-header-category svg');  
+    const category_arrow_use = mvc.querySelector('.container-header-category svg use');
+
+    const subcats = document.querySelectorAll('.container-parent-category a.parent-category');
+    const subcat_arrows = document.querySelectorAll('.container-parent-category a.parent-category i.arrow-button');
+    const subcat_arrow_svgs = document.querySelectorAll('.container-parent-category a.parent-category i.arrow-button svg');
+    const subcat_arrow_uses = document.querySelectorAll('.container-parent-category a.parent-category i.arrow-button svg use');
+
+    // Handle click event
+document.querySelector('.mobile-nav-cc').addEventListener('click', function(evt) {
+    const mb = document.querySelector('.container-mobile-navigation');
+    if (evt.target === mvc ||
+        evt.target === main_mobile_nav ||
+        evt.target === category_ ||
+        evt.target === category_arrow ||
+        evt.target === category_arrow_use
+    ) {
+        category_arrow.classList.toggle('toggle-rotate');
+        mb.classList.toggle('toggle-show'); 
+    } else {
+        const isSubcat = Array.from(subcats).includes(evt.target);
+        const isSubcatArrow = Array.from(subcat_arrows).includes(evt.target);
+        const isSubcatArrowSvg = Array.from(subcat_arrow_svgs).includes(evt.target);
+        const isSubcatArrowUse = Array.from(subcat_arrow_uses).includes(evt.target);
+
+        if (isSubcat || isSubcatArrow || isSubcatArrowSvg || isSubcatArrowUse) {
+            evt.preventDefault();
+            let subcatElement = evt.target;
+
+            if (isSubcatArrow || isSubcatArrowSvg || isSubcatArrowUse) {
+                subcatElement = evt.target.closest('a.parent-category');
+            }
+
+            if (subcatElement) {
+                const nextElement = subcatElement.nextElementSibling;
+                const arrowkey = subcatElement.querySelector('i.arrow-button');
+                if (nextElement) {
+                    nextElement.classList.toggle('toggle-show');
+                }
+                if (arrowkey) {
+                    arrowkey.classList.toggle('toggle-rotate');
+                }
+            }
+        }
+    }
+});
+
+// });
+
+// document.addEventListener('DOMContentLoaded', function() {
+  // Function to check width and remove class
+  function checkWidth() {
+    const desktopNav = document.querySelector('.desktop-nav');
+    const md = document.querySelector('.desktop-nav-cc svg');
+    if (window.innerWidth > 900) {
+      desktopNav.classList.remove('toggle-show');
+      md.classList.remove('toggle-rotate');
+    }else{
+
+    }
+  }
+
+  // Initial check on load
+  checkWidth();
+  // Check on resize
+  window.addEventListener('resize', checkWidth);
+// });
+
+/************************************************ END OF NAVIGATION MENU SCRIPT**/
+/***SEARCH NAVIGATION**/
+// document.addEventListener('DOMContentLoaded',function(){
+    var search_container = document.createElement('div');
+    search_container.classList.add('script_results');
+    var p = document.querySelector('.main-custom-nav');
+    // Select the input element using querySelector
+    const inputElement = document.querySelector(".s_desktop input[name='search_query']");
+    const closebtn = document.createElement('div');
+    const closeicon = document.createElement('i');
+    closeicon.classList.add('fa');
+    closeicon.classList.add('fa-times');
+    closebtn.setAttribute('style','width:max-content;padding:4px 10px;');
+    closebtn.append(closeicon);
+    closebtn.classList.add('closebtn');
+    // Debounce function to delay execution of a given function by `wait` milliseconds
+    function debounce(func, wait) {
+        let timeout;
+
+        return function (...args) {
+            // Clear the previous timeout each time the user types
+            clearTimeout(timeout);
+
+            // Set a new timeout to execute the function after the delay
+            timeout = setTimeout(() => {
+                func.apply(this, args);
+            }, wait);
+        };
+    }
+
+    // The function that will be executed after typing more than 3 characters
+    function handleSearch() {
+        const query = inputElement.value;
+
+        // Only perform search if the query is longer than 3 characters
+        if (query.length > 3) {
+            search_container.innerHTML = "<div class='spinner'></div>"; 
+            p.append(search_container);
+            fetchData(query); // Call the API function with the search query
+        }
+    }
+
+    // Function to make the API call
+    function fetchData(query) {
+        console.log('Fetching data for:', query);
+
+        // Perform the fetch request (replace with your actual API endpoint)
+        fetch(`/search.php?search_query=${encodeURIComponent(query)}`)
+            .then(response => response.text())
+            .then(data => {
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(data, 'text/html');
+                const m_elem = doc.querySelector('#product-listing-container ul.productGrid.products-list');
+                const pagination = doc.querySelector('nav.pagination[aria-label="pagination"]');
+                if(search_container.hasChildNodes){
+                    search_container.innerHTML = '';
+                    search_container.append(closebtn);
+                    search_container.append(m_elem);
+                    search_container.append(pagination);
+                    closebtn.addEventListener('click',function(){
+                        inputElement.value = ''; 
+                        search_container.remove();
+                    });
+                }else{
+                    search_container.append(closebtn);
+                    search_container.append(m_elem);
+                    search_container.append(pagination);
+                    closebtn.addEventListener('click',function(){
+                        inputElement.value = ''; 
+                        search_container.remove();
+                        
+                    });
+                }
+                if(m_elem.childNodes.length == 1){
+                    search_container.innerHTML = "No results found for: " + query
+                }
+                p.append(search_container);
+            })
+            .catch(error => {
+                console.error('Error fetching data:', error);
+            });
+    }
+
+    // Attach the input event listener with debounce (300ms delay)
+    inputElement.addEventListener('input', debounce(handleSearch,800));
+
+    
+// });
+/**END OF SEARCH NAVIGATION**/
+</script>

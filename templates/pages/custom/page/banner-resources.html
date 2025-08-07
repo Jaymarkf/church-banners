@@ -1,0 +1,240 @@
+
+
+
+
+{{#partial "page"}}
+<style>
+    .custom-page [data-content-region]{
+        max-width:var(--cmax-width);
+        padding:0 20px;
+        margin:0 auto;
+    }
+</style>
+<div class="zig_zag_wrapper custom-page">
+    <div class="need-help-zone inner-section video_tutorial white_background_section">
+        <div class="container">
+            {{{region name="banner_resources_page_content"}}}
+        </div>
+    </div>
+    
+    <div class="need-help-zone inner-section template_section grey_background_section">
+        <div class="container">
+            {{{region name="banner_resources_template_section"}}}
+        </div>
+    </div>
+    
+    <div class="need-help-zone inner-section our_blog_section white_background_section">
+        <div class="container">
+            {{{region name="banner_resources_blog_section"}}}
+        </div>
+    </div>
+    <!--<div class="need-help-zone inner-section sign_up_section video_tutorial white_background_section">-->
+    <!--    <div class="container">-->
+    <!--        {{{region name="banner_resources_sign_up_section"}}}-->
+    <!--    </div>-->
+    <!--</div>-->
+    <div class="need-help-zone request_free_quote grey_background_section">
+        <div class="container"> 
+            {{{region name="banner_resources_request_free_quote"}}}
+        </div>
+    </div>
+    <div class="need-help-zone inner-section faq_section video_tutorial white_background_section">
+        <div class="container">
+            {{{region name="banner_resources_faq_section"}}}
+        </div>
+    </div>
+    <div class="need-custom-zone-faq need-custom-zone inner-section grey_background_section mt0 ptb0">
+    {{> components/common/footer-upper}}
+    </div>
+    <!--<div class="need-custom-zone inner-section grey_background_section mt0">-->
+    <!--    <div class="container">-->
+    <!--        {{{region name="banner_resources_custom_printing"}}}-->
+    <!--    </div>-->
+    <!--</div>-->
+    <div class="need-help-zone inner-section faq_section video_tutorial white_background_section">
+        <div class="container">
+            {{{region name="banner_resources_shipping_delivery"}}}
+        </div>
+    </div>
+</div><!-- zig_zag_wrapper -->
+
+
+<!--<div class="zig_zag_wrapper">-->
+<!--    <div class="need-help-zone inner-section video_tutorial white_background_section">-->
+<!--        <div class="container">-->
+<!--            <div class="row">-->
+<!--                            <div class="col-sm-12 col-md-6 col-lg-6">-->
+<!--                                <div class="text-box-image">-->
+<!--                                    <iframe width="560" height="315" src="https://www.youtube.com/embed/2LwtdlWQlRk" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>-->
+<!--                                </div>-->
+<!--                         </div>-->
+<!--              <div class="col-sm-12 col-md-6 col-lg-6">-->
+<!--                 <div class="text-box-left d-flex align-items-center">-->
+<!--                    <div class="txt-box-inner tright">-->
+<!--                       <h2 class="title underline1r">Video tutorial</h2>-->
+<!--                       <h4>Covering use and setup</h4>-->
+<!--                       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmodf tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>-->
+<!--                       <a href="/videos/" class="btn btn-primary yellow-bg">VIEW ALL</a>-->
+<!--                    </div>-->
+<!--                 </div>-->
+<!--              </div>-->
+
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--    <div class="need-help-zone inner-section template_section grey_background_section">-->
+<!--        <div class="container">-->
+<!--            <div class="row">-->
+
+<!--                  <div class="col-sm-12 col-md-6 col-lg-6">-->
+<!--                     <div class="text-box-left d-flex align-items-center ml14">-->
+<!--                        <div class="txt-box-inner">-->
+<!--                               <h2 class="title underline1">Templates</h2>-->
+<!--                               <h4>For all our banners & displays</h4>-->
+<!--                               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmodf tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>-->
+<!--                               <a href="/banner-templates/" class="btn btn-primary yellow-bg">VIEW ALL</a>-->
+<!--                        </div>-->
+<!--                     </div>-->
+<!--                  </div>-->
+<!--                                <div class="col-sm-12 col-md-6 col-lg-6">-->
+<!--                                        <div class="text-box-image">-->
+<!--                                                <img class="tPdfIcon" src="{{cdn 'assets/img/images/t1.png'}}">-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--    <div class="need-help-zone inner-section our_blog_section white_background_section">-->
+<!--        <div class="container">-->
+<!--            <div class="row">-->
+<!--                            <div class="col-sm-12 col-md-6 col-lg-6">-->
+<!--                                <div class="text-box-image">-->
+<!--                                    <img src="{{cdn 'assets/img/images/t2.png'}}">-->
+<!--                                </div>-->
+<!--                         </div>-->
+<!--              <div class="col-sm-12 col-md-6 col-lg-6">-->
+<!--                 <div class="text-box-left d-flex align-items-center">-->
+<!--                    <div class="txt-box-inner tright">-->
+<!--                       <h2 class="title underline1r">Our blog</h2>-->
+<!--                       <h4>Helping you make a great impression</h4>-->
+<!--                       <p>Our Churchbanner's blog is here to provide resources on how to make a great impression and teach you how to communicate effectively with your next guest! </p>-->
+<!--                       <a href="https://firstimpressions.churchbanners.com" target="_blank" class="btn btn-primary yellow-bg">VIEW OUR BLOG</a>-->
+<!--                    </div>-->
+<!--                 </div>-->
+<!--              </div>-->
+
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--    <div class="need-help-zone inner-section sign_up_section video_tutorial white_background_section">-->
+<!--        <div class="container">-->
+<!--            <div class="row">-->
+<!--              <div class="col-sm-12 col-md-6 col-lg-6">-->
+<!--                 <div class="text-box-left d-flex align-items-center ml14 mt40px">-->
+<!--                    <div class="txt-box-inner">-->
+<!--                       <h2 class="title underline1"> Sign up</h2>-->
+<!--                       <p>for your catalog with samples </p>-->
+<!--                       <a href="/sample-catalog-request-form/" class="btn btn-primary yellow-bg">REQUEST SAMPLE</a>-->
+<!--                    </div>-->
+<!--                 </div>-->
+<!--              </div>-->
+<!--               <div class="col-sm-12 col-md-6 col-lg-6">-->
+<!--                 <div class="text-box-image">-->
+<!--                   <img src="{{cdn 'assets/img/images/t3.png'}}">-->
+<!--                 </div>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--    <div class="need-help-zone request_free_quote grey_background_section">-->
+<!--        <div class="container">-->
+<!--            <div class="row">-->
+
+<!--                  <div class="col-sm-12 col-md-6 col-lg-6">-->
+<!--                     <div class="text-box-left d-flex align-items-center mt40px">-->
+<!--                        <div class="txt-box-inner">-->
+<!--                               <h2 class="title underline1">Request a Free <br> Quote</h2>-->
+<!--                               <p>When someone visits your church for the first time, what will be their first impression? Are they finding their way around your building without getting lost? Is your visual message clear and consistent throughout every banner/sign that is presented to them? </p>-->
+<!--                               <a href="/request-a-free-quote-or-consultation/" class="btn btn-primary yellow-bg">REQUEST A QUOTE</a>-->
+<!--                        </div>-->
+<!--                     </div>-->
+<!--                  </div>-->
+<!--                                <div class="col-sm-12 col-md-6 col-lg-6">-->
+<!--                                        <div class="text-box-image">-->
+<!--                                                <img src="{{cdn 'assets/img/images/t4.png'}}">-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--    <div class="need-help-zone inner-section faq_section video_tutorial white_background_section">-->
+<!--        <div class="container">-->
+<!--            <div class="row">-->
+<!--                            <div class="col-sm-12 col-md-6 col-lg-6">-->
+<!--                                <div class="text-box-image">-->
+<!--                                    <img src="{{cdn 'assets/img/images/t5.png'}}">-->
+<!--                                </div>-->
+<!--                         </div>-->
+<!--              <div class="col-sm-12 col-md-6 col-lg-6">-->
+<!--                 <div class="text-box-left d-flex align-items-center fright">-->
+<!--                    <div class="txt-box-inner tright">-->
+<!--                       <h2 class="title underline1r">FAQ</h2>-->
+<!--                       <h4>Covering all your printing options</h4>-->
+<!--                       <p>Setting up a custom print order? Read this first to get more<br>information about saving out your print file. </p>-->
+<!--                       <a href="/custom-designs/" class="btn btn-primary yellow-bg">VIEW FAQ</a>-->
+<!--                    </div>-->
+<!--                 </div>-->
+<!--              </div>-->
+
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--    <div class="need-custom-zone inner-section grey_background_section mt0">-->
+<!--        <div class="container">-->
+<!--            <div class="row">-->
+<!--              <div class="col-sm-12 col-md-12 col-lg-12">-->
+<!--                 <div class="need-custom-zone d-flex align-items-center justify-content-around">-->
+<!--                    <div class="need-custom-box need-icon">-->
+<!--                       <div class="custom-imge"><img src="{{cdn 'assets/img/images/pencil-icon.png'}}"></div>-->
+<!--                    </div>-->
+<!--                    <div class="need-custom-box need-icon">-->
+<!--                       <div class="custom-txt">-->
+<!--                          <h2>Need custom printing ?</h2>-->
+<!--                          <p>Simply call us at <span>{{theme_settings.address_phone}}</span></p>-->
+<!--                       </div>-->
+<!--                    </div>-->
+<!--                    <div class="need-custom-box need-icon">-->
+<!--                       <div class="custom-btn-box"><a href="/request-a-free-quote-or-consultation/" class="btn btn-primary yellow-bg">Contact us</a></div>-->
+<!--                    </div>-->
+<!--                 </div>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--    <div class="need-help-zone inner-section faq_section video_tutorial white_background_section">-->
+<!--        <div class="container">-->
+<!--            <div class="row">-->
+<!--              <div class="col-sm-12 col-md-6 col-lg-6">-->
+<!--                 <div class="text-box-left d-flex align-items-center">-->
+<!--                    <div class="txt-box-inner">-->
+<!--                       <h2 class="title underline1">Shipping & Delivery</h2>-->
+<!--                       <p>Our goal is to get your banner and displays in your hands as soon as possible. </p>-->
+<!--                       <p>Need to know how soon you can receive your product? <br>Click below for more info about shipping & production times. </p>-->
+<!--                       <a href="/shipping-info/" class="btn btn-primary yellow-bg">LEARN MORE</a>-->
+<!--                    </div>-->
+<!--                 </div>-->
+<!--              </div>-->
+<!--               <div class="col-sm-12 col-md-6 col-lg-6">-->
+<!--                 <div class="text-box-image">-->
+<!--                   <img src="{{cdn 'assets/img/images/t6.png'}}">-->
+<!--                 </div>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+<!-- zig_zag_wrapper -->
+
+{{/partial}}
+
+{{> layout/base}}

@@ -1,0 +1,103 @@
+{{#if banners.bottom}}
+    <div class="banners" data-banner-location="bottom">
+        {{#each (limit banners.bottom_metadata 1)}}
+            <div class="banner" data-event-type="promotion" data-entity-id="{{this.id}}" data-name="{{this.banner-name}}" data-position="{{this.location}}" data-name="{{this.banner-name}}">
+                <div data-event-type="promotion-click">
+                    {{{this.content}}}
+                </div>
+            </div>
+        {{/each}}
+    </div>
+{{/if}}
+{{#if page_type '==' 'product'}}
+ {{{region name="product_below_content--global"}}} 
+{{/if}}
+<div class="container-new-main-footer">
+    <div class="ccontainer-new-footer">
+        <div class="container-footer-logo">
+            <a href="{{urls.home}}" class="header-logo__link" data-header-logo-link>
+                {{#if settings.store_logo.image}}
+                    {{#if theme_settings.logo_size '===' 'original'}}
+                    <img class="header-logo-image-unknown-size"
+                         src="{{getImage settings.store_logo.image 'logo_size'}}"
+                         alt="{{settings.store_logo.title}}"
+                         title="{{settings.store_logo.title}}">
+                    {{else}}
+                    <div class="header-logo-image-container">
+                        <img class="header-logo-image"
+                             src="{{getImage settings.store_logo.image '900w'}}"
+                             srcset="{{getImageSrcset1x2x settings.store_logo.image '900w'}}"
+                             alt="{{settings.store_logo.title}}"
+                             title="{{settings.store_logo.title}}">
+                    </div>
+                    {{/if}}
+                {{else}}
+                <span class="header-logo-text">{{settings.store_logo.title}}</span>
+                {{/if}}
+            </a>
+        </div>
+        <footer class="footer" role="contentinfo">
+            <div class="container">
+                <div class="col-new-footer">
+                        <span class="c-icon"><svg><use xlink:href="#icon-call-fontawesome"></use></svg> (888) 453-0060</span>    
+                        <span class="c-icon"><svg><use xlink:href="#icon-envelope"></use></svg> support@churchbanners.com</span>    
+                        <span class="office-header mulish">Office Hours</span>
+                        <span class="day mulish">Monday - Thursday | 9:00am - 5:00pm CST
+                            Friday | 9:00am - 3:00pm CST<br>
+                            Saturdays and Sundays | Closed</span>
+                </div>
+                <div class="col-new-footer">
+                    <span class="new-footer-title mulish">Categories</span>
+                    <a href="/church-banners" class="category-footer mulish">Church Banners</a>
+                    <a href="/kids-ministry" class="category-footer mulish">Kids Ministry</a>
+                    <a href="/feather-flags" class="category-footer mulish">Feather Flags</a>
+                    <a href="/lightpole-banners" class="category-footer mulish">Light Pole Banners</a>
+                    <a href="/backdrop-banners" class="category-footer mulish">Backdrop Banners</a>
+                    <a href="/stands-displays" class="category-footer mulish">Stands & Displays</a>
+                    <a href="/custom-banners" class="category-footer mulish">Customize</a>
+                    <a href="/outdoor-signs-and-banners" class="category-footer mulish">Outdoor Signs</a>
+                    <a href="/banner-resources" class="category-footer mulish">Templates Videos & More</a>
+                </div> 
+                <div class="col-new-footer">
+                    <span class="new-footer-title mulish">Our Company</span>
+                    {{!-- If its dynamic --}}
+                        {{!--
+                        {{#each pages}}
+                        <a href="{{url}}" class="category-footer mulish">{{name}}</a>
+                        {{/each}}
+                        --}}
+                    {{!-- end of dynamic --}}
+                         <a href="/about-us" class="category-footer mulish">About Us</a>   
+                         <a href="/contact-us" class="category-footer mulish">Contact Us</a>   
+                         <a href="/catalog/" class="category-footer mulish">Free Catalog</a>   
+                         <a href="/free-proof-request/" class="category-footer mulish">Free Proof</a>   
+                         <a href="/request-a-free-quote-or-consultation/" class="category-footer mulish">Request Quote</a>   
+                         <a href="/custom-banners" class="category-footer mulish">Customize</a>   
+                         <a href="/custom-designs" class="category-footer mulish">FAQ</a>   
+                         <a href="/blog" class="category-footer mulish">Blog</a>   
+                </div>
+                <div class="col-new-footer">
+                    <span class="new-footer-title mulish">Resources</span>
+                    <a href="/login.php" class="category-footer mulish">My Account</a>
+                    <a href="/pricing" class="category-footer mulish">Pricing</a>
+                    <a href="/banner-templates" class="category-footer mulish">Templates</a>
+                    <a href="/shipping-info" class="category-footer mulish">Shipping</a>
+                    <a href="/videos" class="category-footer mulish">Videos</a>
+                    <a href="/about-us/#gallery-zone" class="category-footer mulish">Gallery</a>
+
+                </div> 
+                <div class="col-new-footer">
+                    <span class="new-footer-title mulish">Social Media</span>
+                    <div class="container-footer-icons">
+                        <a href="https://www.youtube.com/channel/UCDlcxw4pmgfug4BXrSuOKWQ"><svg><use xlink:href="#icon-youtube-custom"></use></svg></a>
+                        <a href="https://www.facebook.com/churchbannersdfw"><svg class="fb-custom"><use xlink:href="#icon-facebook-custom"></use></svg></a>
+                        <a href="https://www.instagram.com/church_banners/"><svg class="fb-custom"><use xlink:href="#icon-instagram"></use></svg></a>
+                        <a href="https://twitter.com/Church_Banners"><svg class="fb-custom"><use xlink:href="#icon-x"></use></svg></a>
+                    </div>
+                </div>     
+            </div>
+            {{{region name="ssl_site_seal--global"}}}
+            <span class="copy-right-footer">&copy; {{moment format="YYYY"}} {{settings.store_name}} | Love God Love People Serve the world</span>
+        </footer>
+    </div>
+</div>

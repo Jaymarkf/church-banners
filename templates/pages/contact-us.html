@@ -1,0 +1,109 @@
+
+
+{{#partial "hero"}}
+<!-- {{> components/common/breadcrumbs breadcrumbs=breadcrumbs active_url=blog.url}} -->
+<div class><img class="lazyload" src="{{cdn 'img/loading.svg'}}" data-src="https://cdn11.bigcommerce.com/s-cnam78/stencil/a1b1fd80-71ec-013c-c6ef-52867ecfc7a5/e/cce10be0-32af-013d-7fe4-22b04bb55722/img/images/contact.jpg" /></div>
+{{/partial}}
+
+{{#partial "page"}}
+
+
+<main class="page page--contact container">
+
+
+{{#if page.sub_pages}}
+    <nav class="navBar" style="display:none;">
+        <ul class="navBar-section">
+            {{#each page.sub_pages}}
+                <li class="navBar-item"><a class="navBar-action" href="{{url}}">{{title}}</a></li>
+            {{/each}}
+        </ul>
+    </nav>
+{{/if}}
+
+{{{region name="contact_us_page"}}}
+
+<div class="page-content row parent-contact">
+   
+    {{#if forms.contact.success}}
+    <div class="col-sm-12">
+        {{{lang 'forms.contact_us.successful' shopPath=urls.home}}}
+    </div>
+    {{else}}
+        
+        <div class="col-lg-8 col-sm-12 col-md-12 contactuspage" >
+            <div class="pcont">
+            <!-- {{{page.content}}} -->
+            {{{region name="contact_us_page_content"}}}
+            <!--<p>Please fill in your information and a design expert will be in touch soon.<br />If you need immediate assistance, please call and speak to one of our banner experts at <a href="tel:8884530060">888.453.0060</a>.</p>-->
+            </div>
+                <!--<div class="info-address">-->
+                <!--    <p class="ct ct-hotline"><img src="{{cdn 'assets/img/images/1.png'}}" /><span>Phone<br><a href="tel:8884530600">888.453.0600</a></span></p>-->
+                <!--    <p class="ct ct-clock"><img src="{{cdn 'assets/img/images/2.png'}}" /><span>Hours<br>Monday - Thrusday | 9:00am - 5:00pm CST<br>Friday | 9:00am - 3:00pm CST<br>Saturdays and Sundays | Closed</span></p>-->
+                <!--    <p class="ct ct-email"><img src="{{cdn 'assets/img/images/3.png'}}" /><span>Email<br><a href="mailto:{{theme_settings.address_email}}">{{theme_settings.address_email}}</a></span></p>-->
+                <!--    <p class="ct ct-street"><img src="{{cdn 'assets/img/images/4.png'}}" /><span>FAQ<br>Self-Service FAQ Page</span></p>-->
+                <!--</div>-->
+                <!--<div class="block-content clearfix shop-social">-->
+                <!--    <ul>-->
+                <!--        {{#each social_media}}-->
+                <!--        <li class="li-social {{display_name}}-social">-->
+                <!--            <a title="{{display_name}}" href="{{url}}" target="_blank">-->
+                <!--                <span class="fa fa-{{display_name}} icon-social"></span>-->
+                <!--            </a>-->
+                <!--        </li>-->
+                <!--        {{/each}}-->
+                <!--    </ul> -->
+                <!--</div>-->
+                <!--{{#if theme_settings.contact_enable}}-->
+                <!--<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3353.1971763443084!2d-96.94661454883301!3d32.813540180867506!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x864e836a289cc287%3A0xe776609fd8a4b209!2s208%20E%20Irving%20Blvd%2C%20Irving%2C%20TX%2075060%2C%20USA!5e0!3m2!1sen!2sin!4v1591183439678!5m2!1sen!2sin" width="100%" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>-->
+                <!--{{/if}}-->
+        </div>
+        <div class="col-lg-4 col-sm-12 col-md-12 content-contact">
+                {{> components/page/contact-us-form}}                
+        </div>
+    
+    {{/if}}
+   
+
+    
+</div>
+
+</main>
+<style>
+    .contactuspage{
+        width:60%;
+    }
+    .content-contact{
+        width:40%;
+    }
+    .parent-contact{
+        @media(max-width:1126px){
+            flex-direction:column;
+        }
+    }
+    .contactuspage,.content-contact{
+        @media(max-width:1126px){
+            width:100%;
+        }
+    }
+    .cb-simple-text-edf44634-cde9-4188-b29d-9ee4d9cf79e4{
+        @media(max-width:1126px){
+                text-align: center;
+                display: block;
+                width: 100%;
+        }
+    }
+    .cb-simple-text-edf44634-cde9-4188-b29d-9ee4d9cf79e4::before{
+        @media(max-width:1126px){
+            display:none; 
+        }   
+    }
+    #sd-simple-text-editable-ae65d34a-8bf4-4599-8578-7471877ecc82 p a{
+        text-decoration: none !important;
+        color:#f7b921 !important;
+    }
+    
+</style>
+{{/partial}}
+
+{{> layout/base}}

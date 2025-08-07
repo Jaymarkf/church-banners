@@ -1,0 +1,63 @@
+<div class="container-announcement_bar" style="background-color:{{theme_settings.announcement_background-color}};">
+    <span class="announcement_bar" style="color:{{theme_settings.announcement_text_color}};">{{{lang 'announcement_bar'}}}</span>
+</div>
+<header class="header" role="banner"> 
+    <div class="container-aoc-custom-header">
+        <div class="mobile-toggle-button">
+            <button class="hamburger-button">
+                <svg class="hamburger-menu ham-bar">
+                    <use xlink:href="#icon-hamburger"></use>
+                </svg>
+                <svg class="hamburger-menu ham-x">
+                    <use xlink:href="#icon-ham-x"></use>
+                </svg>
+            </button>
+        </div>
+        <div class="header-logo-container">
+            {{>components/common/store-logo}}
+        </div>
+        <div class="contact-container">
+                <a class="container-phone _20px-mulish" href="tel:888-453-0060">
+                    <svg>
+                        <use xlink:href="#icon-call"></use>
+                    </svg>
+                    888.453.0060
+                </a>
+                <a href="mailto:support@churchbanners.com" class="mail-href">
+                    <svg>
+                        <use xlink:href="#icon-chat"></use>
+                    </svg>
+                    support@churchbanners.com
+                </a>
+        </div>
+        <div class="cta-header-container">
+            <a href="/catalog/" class="button-white">Request Catalog</a>
+            <a href="/contact-us" class="button-yellow p-mulish bold contrast-yellow">Contact Us</a>
+        </div>
+        
+        <div class="mobile-account-container">
+            <a href="/account.php" class="main-account">
+                <svg>
+                    <use xlink:href="#icon-user-account"></use>
+                </svg>
+            </a>
+            <div  class="cart-account">
+                <a style="text-decoration: none;"   
+                href="{{urls.cart}}"
+                aria-label="{{lang 'cart.nav_aria_label'}}"
+             >
+                 <svg><use xlink:href="#icon-cart"></use></svg>
+                 <span class="countPill cart-quantity"></span>
+            </div>
+            </a>
+        </div>
+    </div>
+    <div class="aoc-custom-navigation">
+            {{>aoc-custom-section/header/custom-navigation theme_settings=theme_settings categories=categories}}
+    </div>
+    {{!--
+    {{{region name="header_navigation_bottom--global"}}}
+    --}}
+</header>
+{{{region name="header_bottom--global"}}}
+{{{region name="header_bottom"}}}

@@ -1,0 +1,105 @@
+<div class="container-reviews-section">
+    <div class="container-header-section">
+        <h2 class="h2-mulish text-black">{{lang 'homepage_review_title'}}</h2>
+        <span class="p-mulish text-black">{{lang 'homepage_description'}}</span>
+    </div>
+    <div class="main-content-reviews-section" data-slick='{
+        "infinite":true,
+        "slidesToShow": 3,
+        "slidesToScroll": 1,
+        "adaptiveHeight":true,
+        "arrows":false,
+        "responsive": [
+            {
+                "breakpoint": 868,
+                "settings": {
+                    "slidesToShow": 2,
+                    "slidesToScroll":1,
+                    "arrows":false
+                }
+            },
+            {
+                "breakpoint": 550,
+                "settings": {
+                    "slidesToShow": 1,
+                    "slidesToScroll": 1,      
+                    "arrows":false
+                }
+            }
+        ]
+        }'>
+
+    </div>
+</div>
+{{!--convert all lang json  of reviews and process it into js --}}
+{{~inject 'reviews' (langJson 'homepage_reviews')}}
+<script>
+    document.addEventListener('DOMContentLoaded',function(){
+        var jsContext = JSON.parse({{jsContext}});
+        var translation = jsContext.reviews;
+        var b = JSON.parse(translation);
+        var data = b['translations'];
+        var groupedReviews = [];
+        for (var key in data) {
+            var parts = key.split('.');
+            var index = parts[1];
+            var property = parts[2];
+            var reviewIndex = groupedReviews.findIndex(function(review) {
+                return review.index === index;
+            });
+            if (reviewIndex === -1) {
+                groupedReviews.push({
+                    index: index,
+                    [property]: data[key]
+                });
+            } else {
+                groupedReviews[reviewIndex][property] = data[key];
+            }
+        }
+        var Reviews = groupedReviews;
+        var container = document.querySelector('.main-content-reviews-section');
+        Reviews.forEach(function(review){
+            //start your logical code here all data you need is in the review variable ~ AOC
+            var reviewElement = document.createElement('div');
+            reviewElement.classList.add('col-reviews');
+
+            var starContainer = document.createElement('div');
+            starContainer.classList.add('star-container');
+            for (var i = 0; i < parseInt(review['star-rating']); i++) {
+                var starSvg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+                var useElement = document.createElementNS('http://www.w3.org/2000/svg', 'use');
+                useElement.setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href', '#icon-star');
+                starSvg.appendChild(useElement);
+                starContainer.appendChild(starSvg);
+            }
+            reviewElement.appendChild(starContainer);
+
+            var reviewTitle = document.createElement('div');
+            reviewTitle.classList.add('review-title');
+            var titleSpan = document.createElement('span');
+            titleSpan.classList.add('h4-mulish', 'text-black');
+            titleSpan.textContent = review['review-title'];
+            reviewTitle.appendChild(titleSpan);
+            reviewElement.appendChild(reviewTitle);
+
+            var reviewsMainContent = document.createElement('div');
+            reviewsMainContent.classList.add('reviews-main-content');
+            var contentParagraph = document.createElement('p');
+            contentParagraph.classList.add('p-mulish', 'text-black');
+            contentParagraph.textContent = review['review-post'];
+            reviewsMainContent.appendChild(contentParagraph);
+            reviewElement.appendChild(reviewsMainContent);
+
+            var reviewsPerson = document.createElement('div');
+            reviewsPerson.classList.add('reviews-person');
+            var personParagraph = document.createElement('p');
+            personParagraph.classList.add('_20px-mulish', 'text-black');
+            personParagraph.textContent = review['review-person'];
+            reviewsPerson.appendChild(personParagraph);
+            reviewElement.appendChild(reviewsPerson);
+
+            // Append the review element to the container
+            container.appendChild(reviewElement);
+        });
+    });
+</script>

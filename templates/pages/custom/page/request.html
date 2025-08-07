@@ -1,0 +1,90 @@
+
+
+{{#partial "hero"}}
+<!-- {{> components/common/breadcrumbs breadcrumbs=breadcrumbs active_url=blog.url}} -->
+<div class><img src="https://cdn11.bigcommerce.com/s-cnam78/stencil/a1b1fd80-71ec-013c-c6ef-52867ecfc7a5/e/cce10be0-32af-013d-7fe4-22b04bb55722/img/images/contact.jpg" /></div>
+{{/partial}}
+
+{{#partial "page"}}
+
+
+<main class="page page--contact container">
+
+
+{{#if page.sub_pages}}
+    <nav class="navBar">
+        <ul class="navBar-section">
+            {{#each page.sub_pages}}
+                <li class="navBar-item"><a class="navBar-action" href="{{url}}">{{title}}</a></li>
+            {{/each}}
+        </ul>
+    </nav>
+{{/if}}
+
+<div class="page-content row ">
+   
+
+        
+    <div class="col-sm-12 col-md-12 box-slider-title header-title" >
+    <!--<h2 class="request">-->
+        <!-- {{page.title}} -->
+        <!--Request a Quote-->
+        
+    <!--</h2>-->
+    {{{region name="request_title"}}}
+    </div>
+        <div class="col-lg-6 col-sm-12 col-md-12 freeCatalogPage freeCatalogPageText" >
+            <!-- {{{page.content}}} -->
+            {{{region name="request_content"}}}
+         <!--<p>Whether you want a price match to a competitor or want to get a bulk discount on a larger order, simply fill out the information below, and a design expert will be in touch soon. If you need immediate assistance, please call and speak with one of our experts at <a href="tel:8884530060" class="btext">888.453.0060.</a></p>  -->
+        <!-- <div class="info-address">-->
+        <!--    <p class="ct ct-clock"><img src="{{cdn 'assets/img/images/2.png'}}" /><span>Hours<br>Monday - Thrusday | 9:00am - 6:00pm CST<br>Friday | 9:00am - 3:00pm CST<br>Saturdays and Sundays | Closed</span></p>-->
+            
+        <!--</div>-->
+
+         <!--<div class="requestLeft">-->
+            <!--<img src="{{cdn 'assets/img/images/quote.jpg'}}" />-->
+         <!--   {{{region name="requestsec_img"}}}-->
+         <!--   <div class="requestBtns">-->
+         <!--       {{{region name="request_btn1"}}}-->
+         <!--       {{{region name="request_btn2"}}}-->
+               <!--<a href="#" class="btn1">CLICK TO CALL</a>-->
+               <!--<a href="#" class="btn2">LEARN MORE</a>-->
+         <!--   </div>-->
+         <!--</div>-->
+                
+        </div>
+        <div class="col-lg-6 col-sm-12 col-md-12 freeCatalog">
+           {{{region name="request_form"}}}
+            <!-- <div id="wufoo-pmximyo11f84w7">Fill out my <a href="https://churchbanners.wufoo.com/forms/pmximyo11f84w7">online form</a>.</div>
+            <script type="text/javascript">// <![CDATA[
+            var pmximyo11f84w7;(function(d, t) {
+            var s = d.createElement(t), options = {
+            'userName':'churchbanners',
+            'formHash':'pmximyo11f84w7',
+            'autoResize':true,
+            'height':'759',
+            'async':true,
+            'host':'wufoo.com',
+            'header':'show',
+            'ssl':true};
+            s.src = ('https:' == d.location.protocol ? 'https://' : 'http://') + 'www.wufoo.com/scripts/embed/form.js';
+            s.onload = s.onreadystatechange = function() {
+            var rs = this.readyState; if (rs) if (rs != 'complete') if (rs != 'loaded') return;
+            try { pmximyo11f84w7 = new WufooForm();pmximyo11f84w7.initialize(options);pmximyo11f84w7.display(); } catch (e) {}};
+            var scr = d.getElementsByTagName(t)[0], par = scr.parentNode; par.insertBefore(s, scr);
+            })(document, 'script');
+            // ]]></script> -->
+
+           
+           
+        </div>
+</div>
+
+</main>
+
+{{> components/common/footer-upper}}
+
+{{/partial}}
+
+{{> layout/base}}

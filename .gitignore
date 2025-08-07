@@ -1,0 +1,52 @@
+# Node modules
+node_modules/
+
+# Compiled/dist files
+assets/dist/
+assets/css/
+assets/js/bundle.js
+assets/js/bundle.js.map
+
+# Theme cache and temp
+parsed/
+.stencil/
+.stencil-cache/
+.stencil-assets/
+
+# System files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Logs and debug files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# IDE/editor folders
+.vscode/
+.idea/
+
+# Environment and secrets
+.env
+secrets.stencil.json
+
+# OS generated files
+ehthumbs.db
+Icon?
+__MACOSX/
+
+# Build files
+webpack.common.js
+webpack.dev.js
+webpack.prod.js
+Gruntfile.js
+CHANGELOG.md
+
+# Misc
+*.bak
+*.tmp
+*.swp
+
+# Backup ZIPs
+*.zip

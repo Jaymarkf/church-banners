@@ -1,0 +1,26 @@
+{
+  "customLayouts": {
+    "brand": {},
+    "category": {},
+    "page": {
+      "_home.html":"/",
+      "about-us.html":"/about-us",
+      "backgrop-banners.html":"/backdrop-banners",
+      "banner-resources.html":"/banner-resources",
+      "catalog.html":"/catalog",
+      "church-banners":"/church-banners",
+      "custom-banners.html":"/custom-banners",
+      "faq.html":"/custom-designs",
+      "feather-flags.html" : "/feather-flags",
+      "kids-ministry.html":"/kids-ministry",
+      "lightpole-banners.html":"/lightpole-banners",
+      "request.html":"/request",
+      "shipping-info.html":"/shipping-info",
+      "stands-dislays.html":"/stands-displays",
+      "videos.html":"/videos"
+    },
+    "product": {}
+  },
+  "normalStoreUrl": "https://churchbanners.com",
+  "port": 3000
+}

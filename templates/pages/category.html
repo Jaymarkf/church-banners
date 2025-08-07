@@ -1,0 +1,137 @@
+---
+products:
+    new:
+        limit: 60
+    featured:
+        limit: 60
+    top_sellers:
+        limit: 60
+category:
+    shop_by_price: true
+    products:
+        new:
+            limit: 60
+        limit: 60
+blog:
+    recent_posts:
+        limit: {{theme_settings.homepage_blog_posts_count}}
+---
+{{inject "categoryProductsPerPage" 60}}
+{{#partial "head"}}
+    {{#if pagination.category.previous}}
+        <link rel="prev" href="{{pagination.category.previous}}">
+    {{/if}}
+    {{#if pagination.category.next}}
+        <link rel="next" href="{{pagination.category.next}}">
+    {{/if}}
+{{/partial}}
+
+{{#partial "page"}}
+{{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+
+{{#any (if (lowercase (dashcase category.name)) '==' 'easter-banners') (if (lowercase (dashcase category.name)) '==' 'mother-s-day') (if (lowercase (dashcase category.name)) '==' 'easter-feather-flags') (if (lowercase (dashcase category.name)) '==' 'outdoor-solutions') (if settings.request.absolute_path '==' '/bible-story-banners/') (if settings.request.absolute_path '==' '/student-ministry-banners/') (if settings.request.absolute_path '==' '/design-collections-1/') (if settings.request.absolute_path '==' '/handheld-signs/') (if settings.request.absolute_path '==' '/church-welcome-banners/') (if settings.request.absolute_path '==' '/welcome-outdoor-banners/') (if settings.request.absolute_path '==' '/seasonal-church-banners/') (if settings.request.absolute_path '==' '/lent-banner-sets/') (if settings.request.absolute_path '==' '/lent-banners/') (if settings.request.absolute_path '==' '/lent-design-styles/') (if settings.request.absolute_path '==' '/easter-indoor-banner-series/') (if settings.request.absolute_path '==' '/lent-retractable-banners/') (if settings.request.absolute_path '==' '/easter-backdrops/') (if settings.request.absolute_path '==' '/easter-yard-signs/') (if settings.request.absolute_path '==' '/easter-light-pole-banner/') (if settings.request.absolute_path '==' '/easter-retractable-banners/') (if settings.request.absolute_path '==' '/easter-handheld-signs/') (if settings.request.absolute_path '==' '/easter-table-throws/') (if settings.request.absolute_path '==' '/outdoor-easter-banner/') (if settings.request.absolute_path '==' '/easter-design-styles/') (if settings.request.absolute_path '==' '/outdoor-vbs-banners/') (if settings.request.absolute_path '==' '/vbs-feather-flags/') (if settings.request.absolute_path '==' '/retractable-banners/') (if settings.request.absolute_path '==' '/sidewalk-signs/') (if settings.request.absolute_path '==' '/easter-1/')
+}}
+
+{{else}}
+    <h1 class="page-heading">{{category.name}}</h1>
+{{/any}}
+ 
+{{!--
+{{#if category.image}}
+    {{> components/common/responsive-img
+        image=category.image
+        fallback_size=theme_settings.zoom_size
+        lazyload=theme_settings.lazyload_mode
+        class="category-header-image"
+    }}
+{{/if}}
+--}}
+{{!--
+{{#unless theme_settings.hide_category_page_heading }}
+    <h1 class="page-heading">{{category.name}}</h1>
+    {{{region name="category_below_header"}}}
+{{/unless}}
+--}}
+
+{{{region name="product_category_custom_image"}}} 
+{{{region name="product_custom_description"}}}
+
+{{!--
+{{{category.description}}}
+--}}
+
+<div class="page">
+    {{!--
+    {{#if category.faceted_search_enabled}}
+        <aside class="page-sidebar col-xl-4 col-lg-4 page-sidebar sidebar-offcanvas" id="faceted-search-container">
+            {{> components/category/sidebar}}
+        </aside>
+    {{else if category.subcategories}}
+        <aside class="page-sidebar col-xl-4 col-lg-4 page-sidebar sidebar-offcanvas" id="faceted-search-container">
+            {{> components/category/sidebar}}
+        </aside>
+    {{else if theme_settings.shop_by_price_visibility}}
+        <aside class="page-sidebar col-xl-4 col-lg-4 page-sidebar sidebar-offcanvas" id="faceted-search-container">
+            {{> components/category/sidebar}}
+        </aside>
+    {{/if}}
+    --}}
+
+    {{>aoc-custom-section/homepage/usp-section theme_settings=theme_settings}}
+    <main class="page-content products-category" id="product-listing-container">
+        {{#any (if (lowercase (dashcase category.name)) '==' 'mother-s-day-signs') (if (lowercase (dashcase category.name)) '==' 'mother-s-day-feather-flags') (if (lowercase (dashcase category.name)) '==' 'mother-s-day-backdrop')}}
+        {{{category.description}}}
+        {{else}}
+        
+        {{/any}}
+        {{> components/category/product-listing}}
+    </main>
+
+
+    <div class="page-region">
+ 
+
+    </div>
+</div>
+<div class="container-request-free-quote">
+        <style>
+        [data-content-region="container-before-blog-posts"]{
+            padding-left:0 !important;
+            padding-right:0 !important;
+            max-width:100% !important;
+        }
+    </style>
+    {{{region name="container-before-blog-posts"}}}
+</div>
+{{>aoc-custom-section/homepage/blog-post-section theme_settings=theme_settings}}
+
+<div class="container-request-free-quote" style="margin:0;">
+    {{{region name="container-request-free-quote"}}}
+</div>
+
+{{!--
+{{>aoc-custom-section/homepage/request-free-quote theme_settings=theme_settings}}
+--}}
+
+
+<script>
+// document.addEventListener("DOMContentLoaded", function () {
+//   const regions = [
+//     '[data-content-region="product_category_custom_image"]',
+//     '[data-content-region="product_custom_description"]'
+//   ];
+
+//   regions.forEach(selector => {
+//     const el = document.querySelector(selector);
+//     if (el && el.children.length > 0) { 
+//       el.style.setProperty('padding', '0', 'important');
+//       el.style.setProperty('padding-top', '40', 'important');
+//       el.style.setProperty('padding-bottom', '40', 'important');
+//     }
+//   });
+// });
+</script>
+
+
+{{/partial}}
+{{> layout/base}}
